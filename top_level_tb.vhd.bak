@@ -1,0 +1,71 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity top_level_tb is
+end entity;
+
+architecture tb of top_level_tb is
+    -- Signal declarations for the inputs and outputs of the DUT (Device Under Test)
+    signal CLOCK_50   : std_logic := '0';
+    signal ADC_SDAT   : std_logic := '0';
+    signal ADC_SADDR  : std_logic := '0';
+    signal ADC_CS_N   : std_logic := '1';
+    signal ADC_SCLK   : std_logic;
+    signal adc_data_out : std_logic_vector(15 downto 0);
+    
+    -- Clock period definition
+    constant clk_period : time := 20 ns; -- 50 MHz clock
+begin
+    -- Instantiate the DUT (top_level)
+    DUT : entity work.top_level
+        port map (
+            CLOCK_50 => CLOCK_50,
+            ADC_SDAT => ADC_SDAT,
+            ADC_SADDR => ADC_SADDR,
+            ADC_CS_N => ADC_CS_N,
+            ADC_SCLK => ADC_SCLK,
+            adc_data_out => adc_data_out
+        );
+        
+    -- Clock generation process
+    clk_process : process
+    begin
+        while true loop
+            CLOCK_50 <= '0';
+            wait for clk_period / 2;
+            CLOCK_50 <= '1';
+            wait for clk_period / 2;
+        end loop;
+    end process;
+    
+    -- Stimulus process to drive inputs and observe outputs
+    stimulus_process : process
+    begin
+        -- Initial conditions
+        ADC_CS_N <= '1';  -- Start with ADC disabled (active low)
+        ADC_SDAT <= '0';
+        ADC_SADDR <= '0';
+        
+        -- Wait for some time, then start simulation
+        wait for 200 ns;
+        
+        -- Activate ADC by lowering CS_N
+        ADC_CS_N <= '0';
+        
+        -- Simulate ADC data input
+        wait for 200 ns;
+        ADC_SDAT <= '1';
+        
+        wait for 200 ns;
+        ADC_SDAT <= '0';
+        
+        wait for 200 ns;
+        ADC_SDAT <= '1';
+        
+        -- End simulation after enough time has passed
+        wait for 1000 ns;
+        wait;
+    end process;
+    
+end architecture;

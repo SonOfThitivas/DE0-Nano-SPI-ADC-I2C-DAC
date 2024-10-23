@@ -1,0 +1,155 @@
+# Reading pref.tcl
+# do de0_nano_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying D:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlib utils
+# ** Warning: (vlib-34) Library already exists at "utils".
+# vmap utils utils
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap utils utils 
+# Modifying modelsim.ini
+# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:46 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity virtual_clock
+# -- Compiling architecture vclock of virtual_clock
+# End time: 21:56:46 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/types.vhdl}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:46 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/types.vhdl 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package machine_state_type
+# -- Compiling package body machine_state_type
+# -- Loading package machine_state_type
+# End time: 21:56:46 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:46 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package fonts
+# End time: 21:56:46 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/spi_master.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:46 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/spi_master.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity spi_master
+# -- Compiling architecture logic of spi_master
+# End time: 21:56:46 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:46 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity I2C_MCP4725
+# -- Compiling architecture Behavioral of I2C_MCP4725
+# End time: 21:56:47 on Oct 23,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:47 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package machine_state_type
+# -- Compiling entity de0nano_adc
+# -- Compiling architecture main of de0nano_adc
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading entity spi_master
+# ** Warning: D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd(35): Cannot associate port "sclk" of mode BUFFER with port "ADC_SCLK" of mode OUT.
+# End time: 21:56:47 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/top_level.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:47 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/top_level.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package machine_state_type
+# -- Loading package fonts
+# -- Compiling entity top_level
+# -- Compiling architecture main of top_level
+# -- Loading entity virtual_clock
+# -- Loading entity de0nano_adc
+# -- Loading entity I2C_MCP4725
+# End time: 21:56:47 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:47 on Oct 23,2024
+# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top_level_tb
+# -- Compiling architecture sim of top_level_tb
+# End time: 21:56:47 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -L utils -voptargs="+acc"  top_level_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -L utils -voptargs=""+acc"" top_level_tb 
+# Start time: 21:56:47 on Oct 23,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.top_level_tb(sim)
+# Loading utils.machine_state_type(body)
+# Loading utils.fonts
+# Loading work.top_level(main)
+# Loading utils.virtual_clock(vclock)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.de0nano_adc(main)
+# Loading work.spi_master(logic)
+# Loading work.i2c_mcp4725(behavioral)
+# ** Warning: (vsim-8683) Uninitialized inout port /top_level_tb/uut/dac/sda has no driver.
+# This port will contribute value (U) to the signal network.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Break key hit
+# Simulation stop requested.
+# End time: 21:57:23 on Oct 23,2024, Elapsed time: 0:00:36
+# Errors: 0, Warnings: 1
