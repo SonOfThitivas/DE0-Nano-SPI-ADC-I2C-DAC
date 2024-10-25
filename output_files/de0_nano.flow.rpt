@@ -1,5 +1,5 @@
 Flow report for de0_nano
-Wed Oct 23 21:56:38 2024
+Fri Oct 25 18:15:35 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Oct 23 21:56:38 2024       ;
+; Flow Status                        ; Successful - Fri Oct 25 18:15:35 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; de0_nano                                    ;
 ; Top-level Entity Name              ; top_level                                   ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/23/2024 21:56:32 ;
+; Start date & time ; 10/25/2024 18:15:29 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; de0_nano            ;
 +-------------------+---------------------+
@@ -76,19 +76,23 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 2543711158273.172969539210704          ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; top_level_tb   ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; top_level_tb                           ; --            ; --          ; eda_simulation ;
+; COMPILER_SIGNATURE_ID                ; 2543711158273.172985492917464          ; --            ; --          ; --             ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; tb_top_level   ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tb_top_level                           ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Vhdl                                   ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --             ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; top_level_tb.vhd                       ; --            ; --          ; top_level_tb   ;
-; EDA_TEST_BENCH_MODULE_NAME           ; top_level_tb                           ; --            ; --          ; top_level_tb   ;
-; EDA_TEST_BENCH_NAME                  ; top_level_tb                           ; --            ; --          ; eda_simulation ;
+; EDA_TEST_BENCH_FILE                  ; tb_top_level.vhd                       ; --            ; --          ; tb_top_level   ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tb_top_level                           ; --            ; --          ; tb_top_level   ;
+; EDA_TEST_BENCH_NAME                  ; tb_top_level                           ; --            ; --          ; eda_simulation ;
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --             ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                   ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS       ; Half Signal Swing                      ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS       ; Half Signal Swing                      ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS      ; Half Vccio                             ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS      ; Half Vccio                             ; --            ; --          ; --             ;
 ; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; top_level   ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; top_level   ; Top            ;
 ; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; top_level   ; Top            ;
@@ -104,8 +108,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:07     ; 1.0                     ; 4779 MB             ; 00:00:10                           ;
-; Total                  ; 00:00:07     ; --                      ; --                  ; 00:00:10                           ;
+; Analysis & Elaboration ; 00:00:06     ; 1.0                     ; 4802 MB             ; 00:00:09                           ;
+; Total                  ; 00:00:06     ; --                      ; --                  ; 00:00:09                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

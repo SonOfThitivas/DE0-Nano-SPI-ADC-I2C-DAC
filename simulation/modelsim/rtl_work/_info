@@ -9,232 +9,372 @@ z2
 !i10f 100
 cModel Technology
 Z0 dD:/Documents/Quartus_files/de0_nano/simulation/modelsim
-Ede0nano_adc
-Z1 w1729690672
-Z2 DPx5 utils 18 machine_state_type 0 22 i[HiG6PdCEz?5iVZGlIQ<3
-Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
-Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 2
+Eadc_process
+Z1 w1729853388
+Z2 DPx5 utils 5 fonts 0 22 `O>1K`V:<DeBPZ5ZQ>hB41
+Z3 DPx5 utils 18 machine_state_type 0 22 i[HiG6PdCEz?5iVZGlIQ<3
+Z4 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 5
 R0
-Z6 8D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd
-Z7 FD:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd
+Z7 8D:/Documents/Quartus_files/de0_nano/adc_process.vhd
+Z8 FD:/Documents/Quartus_files/de0_nano/adc_process.vhd
+l0
+L8 1
+VVl_2dYTP>4>kDQXAHDo6;3
+!s100 iA[5GHRo><oV=cHR=9T8]1
+Z9 OV;C;2020.1;71
+31
+Z10 !s110 1729854942
+!i10b 1
+Z11 !s108 1729854942.000000
+Z12 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/adc_process.vhd|
+Z13 !s107 D:/Documents/Quartus_files/de0_nano/adc_process.vhd|
+!i113 1
+Z14 o-93 -work work
+Z15 tExplicit 1 CvgOpt 0
+Amain
+Z16 DEx4 work 11 de0nano_adc 0 22 ;W@Rje9fm[i]HPRha>^ob3
+DEx5 utils 13 virtual_clock 0 22 >hiVBzeUIWBEA8i62S_9H0
+R2
+R3
+R4
+R5
+R6
+Z17 DEx4 work 11 adc_process 0 22 Vl_2dYTP>4>kDQXAHDo6;3
+!i122 5
+l31
+L22 51
+VVG_dg<KzBCinH`d3QQmze0
+!s100 1IXDYdEOFMUU9RaO6ZoEm2
+R9
+31
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R14
+R15
+Ede0nano_adc
+Z18 w1729690672
+R3
+R4
+R5
+R6
+!i122 4
+R0
+Z19 8D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd
+Z20 FD:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd
 l0
 L7 1
 V;W@Rje9fm[i]HPRha>^ob3
 !s100 VSm8`Z9`nkNgZfSQjA9Y:2
-Z8 OV;C;2020.1;71
+R9
 31
-Z9 !s110 1729695407
+R10
 !i10b 1
-Z10 !s108 1729695407.000000
-Z11 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd|
-Z12 !s107 D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd|
+R11
+Z21 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd|
+Z22 !s107 D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd|
 !i113 1
-Z13 o-93 -work work
-Z14 tExplicit 1 CvgOpt 0
+R14
+R15
 Amain
-Z15 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
-Z16 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z17 DEx4 work 10 spi_master 0 22 >NRTV[5IG6X<_Vh=f0J:M3
-R2
+Z23 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z24 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z25 DEx4 work 10 spi_master 0 22 >NRTV[5IG6X<_Vh=f0J:M3
 R3
 R4
 R5
-Z18 DEx4 work 11 de0nano_adc 0 22 ;W@Rje9fm[i]HPRha>^ob3
-!i122 2
+R6
+R16
+!i122 4
 l27
 L25 51
 V@HCjT`jKLUh=BSSPMLkGA2
 !s100 m8mf_5>@CJ9WB@B5j>kW_0
-R8
-31
 R9
-!i10b 1
+31
 R10
+!i10b 1
 R11
-R12
-!i113 1
-R13
-R14
-Ei2c_mcp4725
-Z19 w1729693938
-R3
-R4
-R5
-!i122 1
-R0
-Z20 8D:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd
-Z21 FD:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd
-l0
-L5 1
-V@OmYfGJ^Ag=ZCN16cH2`^3
-!s100 hXKK1QT@MfXdn0>kOSd820
-R8
-31
-R9
-!i10b 1
-Z22 !s108 1729695406.000000
-Z23 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd|
-Z24 !s107 D:/Documents/Quartus_files/de0_nano/I2C_MCP4725.vhd|
-!i113 1
-R13
-R14
-Abehavioral
-R3
-R4
-R5
-Z25 DEx4 work 11 i2c_mcp4725 0 22 @OmYfGJ^Ag=ZCN16cH2`^3
-!i122 1
-l27
-L17 67
-V[c=02Na_Ofegk93TU3aIl3
-!s100 W1CniPHS6GOgAYk=1icam2
-R8
-31
-R9
-!i10b 1
+R21
 R22
-R23
-R24
 !i113 1
-R13
 R14
-Espi_master
-Z26 w1729685904
 R15
-R16
-R4
+Ei2c_master
+Z26 w1729832059
+R24
+R23
 R5
+R6
 !i122 0
 R0
-Z27 8D:/Documents/Quartus_files/de0_nano/spi_master.vhd
-Z28 FD:/Documents/Quartus_files/de0_nano/spi_master.vhd
+Z27 8D:/Documents/Quartus_files/de0_nano/i2c_master.vhd
+Z28 FD:/Documents/Quartus_files/de0_nano/i2c_master.vhd
+l0
+L9 1
+VI4h0Eo58kFBEL;``Ea@`40
+!s100 JHbnDWC9HOWZH3hQRRe3[1
+R9
+31
+Z29 !s110 1729854941
+!i10b 1
+Z30 !s108 1729854941.000000
+Z31 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/i2c_master.vhd|
+Z32 !s107 D:/Documents/Quartus_files/de0_nano/i2c_master.vhd|
+!i113 1
+R14
+R15
+Alogic
+R24
+R23
+R5
+R6
+Z33 DEx4 work 10 i2c_master 0 22 I4h0Eo58kFBEL;``Ea@`40
+!i122 0
+l42
+L27 196
+Vl_W4>M^KOJmB4mdg@kRj30
+!s100 d7bA9lGYVo?a78zNX^G;?0
+R9
+31
+R29
+!i10b 1
+R30
+R31
+R32
+!i113 1
+R14
+R15
+Emcp4725_dac
+Z34 w1729854008
+Z35 DPx4 work 12 sample_table 0 22 ?ck[?<FZQE8Y]m^9DSQHa2
+R4
+R5
+R6
+!i122 3
+R0
+Z36 8D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd
+Z37 FD:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd
+l0
+L7 1
+VE7:oz[F[lR3N?ie5ZBnB_0
+!s100 25AK[j<P:48JFK68h;5103
+R9
+31
+R10
+!i10b 1
+R11
+Z38 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd|
+Z39 !s107 D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd|
+!i113 1
+R14
+R15
+Abehavior
+R24
+R23
+R33
+R35
+R4
+R5
+R6
+Z40 DEx4 work 11 mcp4725_dac 0 22 E7:oz[F[lR3N?ie5ZBnB_0
+!i122 3
+l57
+L18 138
+Ve>T_ioW2DN[NEQ1zhNS:k1
+!s100 IQon351;1ZchFi3QPLnXG1
+R9
+31
+R10
+!i10b 1
+R11
+R38
+R39
+!i113 1
+R14
+R15
+Psample_table
+R5
+R6
+!i122 2
+Z41 w1729853480
+R0
+Z42 8D:/Documents/Quartus_files/de0_nano/sample_table.vhd
+Z43 FD:/Documents/Quartus_files/de0_nano/sample_table.vhd
+l0
+L4 1
+V?ck[?<FZQE8Y]m^9DSQHa2
+!s100 C1DERNHLHZJSQl`a6oghS0
+R9
+31
+R10
+!i10b 1
+R11
+Z44 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/sample_table.vhd|
+Z45 !s107 D:/Documents/Quartus_files/de0_nano/sample_table.vhd|
+!i113 1
+R14
+R15
+Bbody
+R35
+R5
+R6
+!i122 2
+l0
+L15 1
+V_nbM4CY`I>FD`RXR=LQKC3
+!s100 UFB];880L:3`^o:?gSTZj3
+R9
+31
+R10
+!i10b 1
+R11
+R44
+R45
+!i113 1
+R14
+R15
+Espi_master
+Z46 w1729685904
+R23
+R24
+R5
+R6
+!i122 1
+R0
+Z47 8D:/Documents/Quartus_files/de0_nano/spi_master.vhd
+Z48 FD:/Documents/Quartus_files/de0_nano/spi_master.vhd
 l0
 L30 1
 V>NRTV[5IG6X<_Vh=f0J:M3
 !s100 jjn3RU`^?HJZVMLJXFf:Z3
-R8
+R9
 31
-Z29 !s110 1729695406
+R10
 !i10b 1
-R22
-Z30 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/spi_master.vhd|
-Z31 !s107 D:/Documents/Quartus_files/de0_nano/spi_master.vhd|
+R11
+Z49 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/spi_master.vhd|
+Z50 !s107 D:/Documents/Quartus_files/de0_nano/spi_master.vhd|
 !i113 1
-R13
 R14
-Alogic
 R15
-R16
-R4
+Alogic
+R23
+R24
 R5
-R17
-!i122 0
+R6
+R25
+!i122 1
 l64
 L52 120
 Vg:<DIf:TF]ZF>O8a@WOYH3
 !s100 nWd[NM89?nn@Z<mch?9Gi2
-R8
+R9
 31
-R29
+R10
 !i10b 1
-R22
-R30
-R31
+R11
+R49
+R50
 !i113 1
-R13
 R14
-Etop_level
-Z32 w1729693849
-Z33 DPx5 utils 5 fonts 0 22 `O>1K`V:<DeBPZ5ZQ>hB41
-R2
-R3
+R15
+Etb_top_level
+Z51 w1729854492
 R4
 R5
-!i122 3
+R6
+!i122 7
 R0
-Z34 8D:/Documents/Quartus_files/de0_nano/top_level.vhd
-Z35 FD:/Documents/Quartus_files/de0_nano/top_level.vhd
+Z52 8D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd
+Z53 FD:/Documents/Quartus_files/de0_nano/tb_top_level.vhd
 l0
-L8 1
-Vcb;kY96?[YRHfZl40HeGd0
-!s100 8696dInLk850UFBS]hT6<0
-R8
-31
+L5 1
+VR@Ao0S5oh=Ehm8PniAbbS0
+!s100 0]Vlh<]HgO@50E2cMQ1h90
 R9
-!i10b 1
-R10
-Z36 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/top_level.vhd|
-Z37 !s107 D:/Documents/Quartus_files/de0_nano/top_level.vhd|
-!i113 1
-R13
-R14
-Amain
-R25
-R18
-DEx5 utils 13 virtual_clock 0 22 >hiVBzeUIWBEA8i62S_9H0
-R33
-R2
-R3
-R4
-R5
-DEx4 work 9 top_level 0 22 cb;kY96?[YRHfZl40HeGd0
-!i122 3
-l30
-L24 54
-V_jIQ66gYMFJeKP]E2fDl73
-!s100 l7KFoi>HU1Rmj3?:cUb_R2
-R8
 31
-R9
-!i10b 1
 R10
-R36
-R37
-!i113 1
-R13
-R14
-Etop_level_tb
-Z38 w1729695245
-R3
-R4
-R5
-!i122 4
-R0
-Z39 8D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd
-Z40 FD:/Documents/Quartus_files/de0_nano/top_level_tb.vhd
-l0
-L168 1
-V=JEV4=BdEOiM68gOY_`mU1
-!s100 aQJ;]o[zlRZm`Kmz2c1Yn3
-R8
-31
-R9
 !i10b 1
-R10
-Z41 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd|
-!s107 D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd|
+R11
+Z54 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd|
+!s107 D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd|
 !i113 1
-R13
 R14
+R15
 Asim
-R3
+R35
+Z55 DEx4 work 9 top_level 0 22 BWB:a]nNh_6G[^K83dSTV1
 R4
 R5
-DEx4 work 12 top_level_tb 0 22 =JEV4=BdEOiM68gOY_`mU1
-!i122 4
-l204
-L172 79
-VSkB1LgY[3QGAVFc`1Y<?P1
-!s100 ]6R5B`cH;^_X_ZWn?g6k00
-R8
-31
+R6
+DEx4 work 12 tb_top_level 0 22 R@Ao0S5oh=Ehm8PniAbbS0
+!i122 7
+l30
+L8 95
+VlVPz:JIH6gS:]nR5m[z`V2
+!s100 zCb73S2RdSVUk0lLXYZR80
 R9
-!i10b 1
+31
 R10
-R41
-Z42 !s107 D:/Documents/Quartus_files/de0_nano/top_level_tb.vhd|
+!i10b 1
+R11
+R54
+Z56 !s107 D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd|
 !i113 1
-R13
 R14
+R15
+Etop_level
+Z57 w1729854843
+R35
+R5
+R6
+!i122 6
+R0
+Z58 8D:/Documents/Quartus_files/de0_nano/top_level.vhd
+Z59 FD:/Documents/Quartus_files/de0_nano/top_level.vhd
+l0
+L6 1
+VBWB:a]nNh_6G[^K83dSTV1
+!s100 c6G^<K[HEFLV7[e31jD4i1
+R9
+31
+R10
+!i10b 1
+R11
+Z60 !s90 -reportprogress|300|-93|-work|work|D:/Documents/Quartus_files/de0_nano/top_level.vhd|
+Z61 !s107 D:/Documents/Quartus_files/de0_nano/top_level.vhd|
+!i113 1
+R14
+R15
+Abehavior
+R40
+R2
+R3
+R4
+R17
+R35
+R5
+R6
+R55
+!i122 6
+l37
+L24 68
+VPm>M=31BII;T33iKmL`9G3
+!s100 K2zkm>5V8<S9M[am^XibT3
+R9
+31
+R10
+!i10b 1
+R11
+R60
+R61
+!i113 1
+R14
+R15

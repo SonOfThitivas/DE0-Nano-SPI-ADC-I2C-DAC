@@ -1,5 +1,25 @@
 
-State Machine - |top_level|de0nano_adc:adc|state
+State Machine - |top_level|mcp4725_dac:dac|state
+Name state.ST_STOP state.ST_WR_2 state.ST_WR_1 state.ST_START state.ST_IDLE 
+state.ST_IDLE 0 0 0 0 0 
+state.ST_START 0 0 0 1 1 
+state.ST_WR_1 0 0 1 0 1 
+state.ST_WR_2 0 1 0 0 1 
+state.ST_STOP 1 0 0 0 1 
+
+State Machine - |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst|state
+Name state.stop state.mstr_ack state.slv_ack2 state.rd state.wr state.slv_ack1 state.command state.start state.ready 
+state.ready 0 0 0 0 0 0 0 0 0 
+state.start 0 0 0 0 0 0 0 1 1 
+state.command 0 0 0 0 0 0 1 0 1 
+state.slv_ack1 0 0 0 0 0 1 0 0 1 
+state.wr 0 0 0 0 1 0 0 0 1 
+state.rd 0 0 0 1 0 0 0 0 1 
+state.slv_ack2 0 0 1 0 0 0 0 0 1 
+state.mstr_ack 0 1 0 0 0 0 0 0 1 
+state.stop 1 0 0 0 0 0 0 0 1 
+
+State Machine - |top_level|adc_process:adc|de0nano_adc:adc|state
 Name state.busy~reg0 state.execute~reg0 state.ready~reg0 state.initialize~reg0 
 state.initialize~reg0 0 0 0 0 
 state.ready~reg0 0 0 1 1 

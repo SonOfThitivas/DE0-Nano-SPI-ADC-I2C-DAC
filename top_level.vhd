@@ -1,77 +1,91 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-library utils;
-use utils.machine_state_type.all;
-use utils.fonts.all;
+library work;
+use work.sample_table.all;
 
 entity top_level is
-    PORT (
-        CLOCK_50   : IN STD_LOGIC;
-		  
-		  scl : out std_logic;
-		  sda : inout std_logic;
-		  
-        ADC_SDAT   : IN STD_LOGIC;
-        ADC_SADDR,
-        ADC_CS_N,
-        ADC_SCLK   : OUT STD_LOGIC;
-		  
-		  adc_data_out : out STD_LOGIC_VECTOR(11 downto 0) := (others => '0')
-    );
-END entity;
+	port (
+		CLOCK_50,
+		RST	: IN STD_LOGIC;
+		
+		-- ADC SPI Protocal
+		ADC_SDAT   : IN STD_LOGIC;
+      ADC_SADDR,
+      ADC_CS_N,
+      ADC_SCLK   : OUT STD_LOGIC;
+		
+		-- DAC I2C Protocal
+		SDA,
+		SCL	: INOUT STD_LOGIC
+	);
+	
+end top_level;
 
-architecture main of top_level is
-    signal adc_state				  : machine_state_type; -- RO here
-    signal virt_clk             : STD_LOGIC := '0';
-    signal adc_run				  : STD_LOGIC := '0';
-    signal adc_data				  : STD_LOGIC_VECTOR(11 downto 0) := (others => '0');
-    signal adc_addr             : STD_LOGIC_VECTOR(11 downto 0) := (others => '0');
+architecture behavior of top_level is
+
+	type state_type is (RECEIVING_DATA, SENDING_DATA);
+	signal state : state_type := RECEIVING_DATA;
+	
+	signal DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '0');
+
+	signal sample_table : sample_table_t := (others => (others => '0'));
+	signal sample_index : integer range 0 to MAX_INDEX := 0;
+	
+	signal start, done, ddone : std_logic;
+
+
 begin
-    vclock : entity utils.virtual_clock PORT MAP (CLOCK_50 => CLOCK_50, virt_clk => virt_clk);
+	adc : entity work.adc_process port map(
+				CLOCK_50   => CLOCK_50,
+			   ADC_SDAT   => ADC_SDAT,
+			   ADC_SADDR  => ADC_SADDR,
+			   ADC_CS_N	  => ADC_CS_N,
+			   ADC_SCLK   => ADC_SCLK,
+				DATA_RECEIVE => DATA
+			);
+			
+	dac : entity work.mcp4725_dac port map(
+				NRESET  => RST,
+				CLK     => CLOCK_50,
+				sample_table => sample_table,
+				I2C_SDA => SDA,
+				I2C_SCL => SCL,
+				STATUS  => ddone
+			);
+			
 
-    adc : entity work.de0nano_adc PORT MAP (
-        input => adc_addr, output => adc_data, run => adc_run,
-        state => adc_state, virt_clk => virt_clk,
-        CLOCK_50 => CLOCK_50,
-        ADC_SADDR => ADC_SADDR, ADC_SDAT => ADC_SDAT,
-        ADC_CS_N => ADC_CS_N, ADC_SCLK => ADC_SCLK
-    );
-	 
-	 dac : entity work.I2C_MCP4725 port map (
-		  clk         => CLOCK_50,          -- 50 MHz clock
-        reset       => '0',          -- Asynchronous reset
-        start       => '1',         -- Signal to start transmission
-        dac_data    => adc_data,  -- 12-bit data for DAC
-        scl         => scl,          -- I2C Clock
-        sda         => sda        -- I2C Data
-        --done        : out std_logic           -- Transmission done
-	 );
-
-    process(virt_clk, adc_state)
-        variable voltage_level : unsigned(5 downto 0) := (others => '0');
-
-        -- ADC vars
-        variable sleep : unsigned(10 downto 0) := (others => '0');
-    begin
-        -- check if state allows us to do anything
-        if rising_edge(virt_clk) then
-            -- handle ADC
-            if (adc_state = ready and adc_run = '0') then
-                if sleep = 0 then
-                    -- display only the first 6 bits of the received 12 bit value
-                    -- LED <= adc_data(11 downto 6);
-                    voltage_level := unsigned(adc_data(11 downto 6));
-                    adc_addr <= (others => '0');
-                    adc_run <= '1';
-                end if;
-                sleep := sleep + 1;
-            elsif (adc_state = execute and adc_run = '1') then
-                -- reset control signals
-                adc_run <= '0';
-            end if;
-				adc_data_out <= adc_data;
-        end if;
-    end process;
-
-end main;
+	process(CLOCK_50, RST) is
+	begin
+		
+		if RST = '0' then
+			start <= '0';
+			done <= '0';
+			
+		elsif rising_edge(CLOCK_50) then
+			start <= '0';
+			done <= ddone;
+		
+			case state is
+				when RECEIVING_DATA =>
+					if sample_index = MAX_INDEX then
+						sample_table(sample_index) <= DATA;
+						sample_index <= 0;
+						start <= '1';
+						state <= SENDING_DATA;
+					else
+						sample_table(sample_index) <= DATA;
+						sample_index <= sample_index + 1;
+					end if;
+				
+				when SENDING_DATA =>
+					if done = '1' then
+						sample_table <= (others => (others => '0'));
+						done <= '0';
+						state <= SENDING_DATA;
+					end if;
+					
+			end case;
+		end if;
+	end process;
+	
+end behavior;
