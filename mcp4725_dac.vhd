@@ -1,14 +1,15 @@
-library ieee, work;
+library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 --use ieee.math_real.all;
-use work.sample_table.all;
+--use work.sample_table.all;
 
 entity mcp4725_dac is
   port (
     NRESET  : in std_logic;
     CLK     : in std_logic;
-	 sample_table : in sample_table_t := (others => (others => '0'));
+--	 sample_table : in sample_table_t := (others => (others => '0'));
+	 sample  : in std_logic_vector(11 downto 0);
     I2C_SDA : inout std_logic;
     I2C_SCL : inout std_logic;
     STATUS  : out std_logic
@@ -19,6 +20,9 @@ architecture behavior of mcp4725_dac is
   -- 7-bit I2C device address for MCP4725 (0x60)
   constant I2C_ADDR      : std_logic_vector(6 downto 0) := "1100000";
   constant I2C_CLK_SPEED : integer                      := 1_000_000; -- I2C speed
+--  constant I2C_CLK_SPEED : integer                      := 100_000; -- I2C speed
+--	 constant I2C_CLK_SPEED : integer                      := 400_000; -- I2C speed
+--	 constant I2C_CLK_SPEED : integer                      := 3_200_000; -- I2C speed
 
 --  constant BW        : integer := 12; -- 12 bits for DAC output
 --  constant M         : integer := 8;
@@ -40,7 +44,7 @@ architecture behavior of mcp4725_dac is
 --  end function;
 
 --  signal sample_table : sample_table_t               := init_table;
-  signal sample_index : integer range 0 to MAX_INDEX := 0;
+--  signal sample_index : integer range 0 to MAX_INDEX := 0;
 
   type state_type is (ST_IDLE, ST_START, ST_WR_1, ST_WR_2, ST_STOP);
   signal state : state_type := ST_IDLE;
@@ -85,7 +89,7 @@ begin
       ena          <= '0';
       rw           <= '0';
       busy_prev    <= (others => '0');
-      sample_index <= 0;
+--      sample_index <= 0;
       wait_cnt     <= 10000;
 
     elsif rising_edge(CLK) then
@@ -95,7 +99,7 @@ begin
       case state is
         when ST_IDLE =>
           -- Prepare the data (Fast Write Mode)
-          data_buffer <= "0000" & sample_table(sample_index);
+          data_buffer <= "0000" & sample;
           state       <= ST_START;
           ena         <= '0';
 
@@ -124,11 +128,11 @@ begin
             ena <= '0';
           elsif busy_prev = "10" then -- busy goes low
             if ack_error = '0' then -- ACK
-              if sample_index = MAX_INDEX then
-                sample_index <= 0;
-              else
-                sample_index <= sample_index + 1;
-              end if;
+--              if sample_index = MAX_INDEX then
+--                sample_index <= 0;
+--              else
+--                sample_index <= sample_index + 1;
+--              end if;
               state <= ST_IDLE;
             else -- No ACK
               state <= ST_STOP;
@@ -140,11 +144,11 @@ begin
             wait_cnt     <= 10000;
             ena          <= '0';
             state        <= ST_IDLE;
-            sample_index <= 0;
+--            sample_index <= 0;
           else
             wait_cnt <= wait_cnt - 1;
           end if;
-
+				state        <= ST_IDLE;
         when others =>
           state <= ST_IDLE;
 
