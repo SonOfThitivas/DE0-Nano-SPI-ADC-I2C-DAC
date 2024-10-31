@@ -1,13 +1,81 @@
 |top_level
+CLOCK_50 => virtual_clock:vclock.CLOCK_50
+CLOCK_50 => DATA[0].CLK
+CLOCK_50 => DATA[1].CLK
+CLOCK_50 => DATA[2].CLK
+CLOCK_50 => DATA[3].CLK
+CLOCK_50 => DATA[4].CLK
+CLOCK_50 => DATA[5].CLK
+CLOCK_50 => DATA[6].CLK
+CLOCK_50 => DATA[7].CLK
+CLOCK_50 => DATA[8].CLK
+CLOCK_50 => DATA[9].CLK
+CLOCK_50 => DATA[10].CLK
+CLOCK_50 => DATA[11].CLK
+CLOCK_50 => adc_bit_counter[0].CLK
+CLOCK_50 => adc_bit_counter[1].CLK
+CLOCK_50 => adc_bit_counter[2].CLK
+CLOCK_50 => adc_bit_counter[3].CLK
+CLOCK_50 => tp_DATA[0].CLK
+CLOCK_50 => tp_DATA[1].CLK
+CLOCK_50 => tp_DATA[2].CLK
+CLOCK_50 => tp_DATA[3].CLK
+CLOCK_50 => tp_DATA[4].CLK
+CLOCK_50 => tp_DATA[5].CLK
+CLOCK_50 => tp_DATA[6].CLK
+CLOCK_50 => tp_DATA[7].CLK
+CLOCK_50 => tp_DATA[8].CLK
+CLOCK_50 => tp_DATA[9].CLK
+CLOCK_50 => tp_DATA[10].CLK
+CLOCK_50 => tp_DATA[11].CLK
 CLOCK_50 => adc_process:adc.CLOCK_50
 CLOCK_50 => mcp4725_dac:dac.CLK
 RST => mcp4725_dac:dac.NRESET
+RST => DATA[0].ENA
+RST => tp_DATA[11].ENA
+RST => tp_DATA[10].ENA
+RST => tp_DATA[9].ENA
+RST => tp_DATA[8].ENA
+RST => tp_DATA[7].ENA
+RST => tp_DATA[6].ENA
+RST => tp_DATA[5].ENA
+RST => tp_DATA[4].ENA
+RST => tp_DATA[3].ENA
+RST => tp_DATA[2].ENA
+RST => tp_DATA[1].ENA
+RST => tp_DATA[0].ENA
+RST => adc_bit_counter[3].ENA
+RST => adc_bit_counter[2].ENA
+RST => adc_bit_counter[1].ENA
+RST => adc_bit_counter[0].ENA
+RST => DATA[11].ENA
+RST => DATA[10].ENA
+RST => DATA[9].ENA
+RST => DATA[8].ENA
+RST => DATA[7].ENA
+RST => DATA[6].ENA
+RST => DATA[5].ENA
+RST => DATA[4].ENA
+RST => DATA[3].ENA
+RST => DATA[2].ENA
+RST => DATA[1].ENA
 ADC_SDAT => adc_process:adc.ADC_SDAT
 ADC_SADDR <= adc_process:adc.ADC_SADDR
 ADC_CS_N <= adc_process:adc.ADC_CS_N
 ADC_SCLK <= adc_process:adc.ADC_SCLK
 SDA <> mcp4725_dac:dac.I2C_SDA
 SCL <> mcp4725_dac:dac.I2C_SCL
+
+
+|top_level|virtual_clock:vclock
+CLOCK_50 => virt_clk~reg0.CLK
+CLOCK_50 => vclk_cnt[0].CLK
+CLOCK_50 => vclk_cnt[1].CLK
+CLOCK_50 => vclk_cnt[2].CLK
+CLOCK_50 => vclk_cnt[3].CLK
+CLOCK_50 => vclk_cnt[4].CLK
+CLOCK_50 => vclk_cnt[5].CLK
+virt_clk <= virt_clk~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |top_level|adc_process:adc
