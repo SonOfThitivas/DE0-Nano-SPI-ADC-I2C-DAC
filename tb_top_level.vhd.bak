@@ -1,336 +1,113 @@
---library ieee;
---use ieee.std_logic_1164.all;
---use ieee.numeric_std.all;
---
---entity top_level_tb is
---end entity;
---
---architecture tb of top_level_tb is
---    -- Signal declarations for the inputs and outputs of the DUT (Device Under Test)
---    signal CLOCK_50   : std_logic := '0';
---    signal ADC_SDAT   : std_logic := '0';
---    signal ADC_SADDR  : std_logic := '0';
---    signal ADC_CS_N   : std_logic := '1';
---    signal ADC_SCLK   : std_logic;
---    signal adc_data_out : std_logic_vector(15 downto 0);
---    
---    -- Clock period definition
---    constant clk_period : time := 20 ns; -- 50 MHz clock
---begin
---    -- Instantiate the DUT (top_level)
---    DUT : entity work.top_level
---        port map (
---            CLOCK_50 => CLOCK_50,
---            ADC_SDAT => ADC_SDAT,
---            ADC_SADDR => ADC_SADDR,
---            ADC_CS_N => ADC_CS_N,
---            ADC_SCLK => ADC_SCLK,
---            adc_data_out => adc_data_out
---        );
---        
---    -- Clock generation process
---    clk_process : process
---    begin
---        while true loop
---            CLOCK_50 <= '0';
---            wait for clk_period / 2;
---            CLOCK_50 <= '1';
---            wait for clk_period / 2;
---        end loop;
---    end process;
---    
---    -- Stimulus process to drive inputs and observe outputs
---    stimulus_process : process
---    begin
---        -- Initial conditions
---        ADC_CS_N <= '1';  -- Start with ADC disabled (active low)
---        ADC_SDAT <= '0';
---        ADC_SADDR <= '0';
---        
---        -- Wait for some time, then start simulation
---        wait for 200 ns;
---        
---        -- Activate ADC by lowering CS_N
---        ADC_CS_N <= '0';
---        
---        -- Simulate ADC data input
---        wait for 200 ns;
---        ADC_SDAT <= '1';
---        
---        wait for 200 ns;
---        ADC_SDAT <= '0';
---        
---        wait for 200 ns;
---        ADC_SDAT <= '1';
---        
---        -- End simulation after enough time has passed
---        wait for 1000 ns;
---        wait;
---    end process;
---    
---end architecture;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
---library ieee;
---use ieee.std_logic_1164.all;
---use ieee.numeric_std.all;
---
---entity top_level_tb is
---    -- No ports in a testbench
---end entity top_level_tb;
---
---architecture sim of top_level_tb is
---
---    -- Component declaration for the top_level entity
---    component top_level
---        PORT (
---            CLOCK_50    : IN STD_LOGIC;
---            scl          : OUT STD_LOGIC;
---            sda          : INOUT STD_LOGIC;
---            ADC_SDAT     : IN STD_LOGIC;
---            ADC_SADDR    : OUT STD_LOGIC;
---            ADC_CS_N     : OUT STD_LOGIC;
---            ADC_SCLK     : OUT STD_LOGIC;
---            adc_data_out : OUT STD_LOGIC_VECTOR(11 downto 0)
---        );
---    end component;
---
---    -- Signal declarations for the testbench
---    signal CLOCK_50    : STD_LOGIC := '0';
---    signal scl         : STD_LOGIC;
---    signal sda         : STD_LOGIC := 'Z';  -- High impedance for inout
---    signal ADC_SDAT    : STD_LOGIC := '0';  -- Mock ADC data input
---    signal ADC_SADDR   : STD_LOGIC;
---    signal ADC_CS_N    : STD_LOGIC;
---    signal ADC_SCLK    : STD_LOGIC;
---    signal adc_data_out : STD_LOGIC_VECTOR(11 downto 0);
---
---    -- Clock period definition
---    constant CLOCK_PERIOD : time := 20 ns;
---
---begin
---
---    -- Instantiate the top_level entity
---    uut: top_level
---        PORT MAP (
---            CLOCK_50 => CLOCK_50,
---            scl => scl,
---            sda => sda,
---            ADC_SDAT => ADC_SDAT,
---            ADC_SADDR => ADC_SADDR,
---            ADC_CS_N => ADC_CS_N,
---            ADC_SCLK => ADC_SCLK,
---            adc_data_out => adc_data_out
---        );
---
---    -- Clock generation process
---    clk_process: process
---    begin
---        while true loop
---            CLOCK_50 <= '0';
---            wait for CLOCK_PERIOD / 2;
---            CLOCK_50 <= '1';
---            wait for CLOCK_PERIOD / 2;
---        end loop;
---    end process;
---
---    -- Test stimulus process
---    stimulus_process: process
---    begin
---        -- Initialize ADC_SDAT to some value (mocking ADC behavior)
---        wait for 100 ns; -- Wait for some time before starting the test
---
---        ADC_SDAT <= '1';  -- Mock ADC data ready
---        wait for 20 ns;
---
---        ADC_SDAT <= '0';  -- Simulate data read
---        wait for 20 ns;
---
---        -- More test cases can be added here as needed
---        wait for 100 ns; -- Wait for additional time
---        ADC_SDAT <= '1';  -- Change ADC data
---        wait for 20 ns;
---
---        -- Add conditions to check outputs
---        wait for 100 ns;
---        
---        -- End the simulation
---        wait for 1 ms;
---        report "End of simulation" severity note;
---        wait;
---    end process;
---
---end architecture sim;
+entity tb_top_level is
+end tb_top_level;
 
---library ieee;
---use ieee.std_logic_1164.all;
---use ieee.numeric_std.all;
---
---entity top_level_tb is
---    -- No ports in a testbench
---end entity top_level_tb;
---
---architecture sim of top_level_tb is
---
---    -- Component declaration for the top_level entity
---    component top_level
---        PORT (
---            CLOCK_50    : IN STD_LOGIC;
---            scl          : OUT STD_LOGIC;
---            sda          : INOUT STD_LOGIC;
---            ADC_SDAT     : IN STD_LOGIC;
---            ADC_SADDR    : OUT STD_LOGIC;
---            ADC_CS_N     : OUT STD_LOGIC;
---            ADC_SCLK     : OUT STD_LOGIC;
---            adc_data_out : OUT STD_LOGIC_VECTOR(11 downto 0)
---        );
---    end component;
---
---    -- Signal declarations for the testbench
---    signal CLOCK_50    : STD_LOGIC := '0';
---    signal scl         : STD_LOGIC;
---    signal sda         : STD_LOGIC := 'Z';  -- High impedance for inout
---    signal ADC_SDAT    : STD_LOGIC;          -- Mock ADC data input
---    signal ADC_SADDR   : STD_LOGIC;
---    signal ADC_CS_N    : STD_LOGIC;
---    signal ADC_SCLK    : STD_LOGIC;
---    signal adc_data_out : STD_LOGIC_VECTOR(11 downto 0);
---
---    -- Clock period definition
---    constant CLOCK_PERIOD : time := 20 ns;
---
---    -- Signal for real-time data simulation
---    signal adc_value : unsigned(11 downto 0) := (others => '0');
---
---begin
---
---    -- Instantiate the top_level entity
---    uut: top_level
---        PORT MAP (
---            CLOCK_50 => CLOCK_50,
---            scl => scl,
---            sda => sda,
---            ADC_SDAT => ADC_SDAT,
---            ADC_SADDR => ADC_SADDR,
---            ADC_CS_N => ADC_CS_N,
---            ADC_SCLK => ADC_SCLK,
---            adc_data_out => adc_data_out
---        );
---
---    -- Clock generation process
---    clk_process: process
---    begin
---        while true loop
---            CLOCK_50 <= '0';
---            wait for CLOCK_PERIOD / 2;
---            CLOCK_50 <= '1';
---            wait for CLOCK_PERIOD / 2;
---        end loop;
---    end process;
---
---    -- Real-time ADC data simulation process
---    stimulus_process: process
---    begin
---        -- Initialize ADC_SDAT
---        ADC_SDAT <= '0'; 
---        wait for 100 ns; -- Wait before starting
---
---        while true loop
---            -- Simulate real-time ADC data
---            adc_value <= adc_value + 1;  -- Increment the ADC value
---            ADC_SDAT <= adc_value(11); -- Assign the most significant bit to ADC_SDAT
---
---            -- Wait for a short time to simulate sampling rate
---            wait for 10 ns; -- Adjust this to control the sampling rate
---        end loop;
---
---        -- End the simulation
---        wait; -- Keep the process running
---    end process;
---
---end architecture sim;
+architecture sim of tb_top_level is
+    -- Component declaration for the top_level entity
+    component top_level is
+        port (
+            CLOCK_50    : in std_logic;
+            RST          : in std_logic;
+            data_out     : out std_logic_vector(11 downto 0);
+            ADC_SDAT     : in std_logic;
+            ADC_SADDR    : out std_logic;
+            ADC_CS_N     : out std_logic;
+            ADC_SCLK     : out std_logic;
+            SDA          : inout std_logic;
+            SCL          : inout std_logic
+        );
+    end component;
 
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.std_logic_unsigned.ALL;
+    -- Testbench signals
+    signal CLOCK_50    : std_logic := '0';
+    signal RST         : std_logic := '1';
+    signal data_out    : std_logic_vector(11 downto 0);
+    signal ADC_SDAT    : std_logic := '0';  -- Assuming it is initially low
+    signal ADC_SADDR   : std_logic;
+    signal ADC_CS_N    : std_logic;
+    signal ADC_SCLK    : std_logic;
+    signal SDA         : std_logic := 'Z'; -- I2C bus is high impedance
+    signal SCL         : std_logic := 'Z';
 
-ENTITY top_level_tb IS
-END top_level_tb;
+    -- Clock period definition
+    constant clk_period : time := 20 ns; -- 50 MHz clock
 
-ARCHITECTURE behavior OF top_level_tb IS
-  -- Component declaration for the Unit Under Test (UUT)
-  COMPONENT top_level
-    PORT(
-      clk       : IN  STD_LOGIC;
-      reset_n   : IN  STD_LOGIC;
-      ena       : IN  STD_LOGIC;
-      busy      : OUT STD_LOGIC;
-      ack_error : OUT STD_LOGIC;
-      scl       : INOUT STD_LOGIC;
-      sda       : INOUT STD_LOGIC
-    );
-  END COMPONENT;
-
-  -- Signals for simulation
-  SIGNAL clk       : STD_LOGIC := '0';
-  SIGNAL reset_n   : STD_LOGIC := '0';
-  SIGNAL ena       : STD_LOGIC := '0';
-  SIGNAL busy      : STD_LOGIC;
-  SIGNAL ack_error : STD_LOGIC;
-  SIGNAL scl       : STD_LOGIC;
-  SIGNAL sda       : STD_LOGIC;
-  SIGNAL dac_data  : STD_LOGIC_VECTOR(11 DOWNTO 0) := (OTHERS => '0');
-
-  -- Clock generation
-  CONSTANT clk_period : TIME := 20 ns;  -- 50 MHz clock
-
-BEGIN
-  -- Instantiate the Unit Under Test (UUT)
-  UUT: top_level
-    PORT MAP (
-      clk       => clk,
-      reset_n   => reset_n,
-      ena       => ena,
-      busy      => busy,
-      ack_error => ack_error,
-      scl       => scl,
-      sda       => sda
+    -- Lookup table for sine wave
+    type sine_table_type is array(0 to 63) of integer;
+    constant sine_table : sine_table_type := (
+        2048, 2203, 2354, 2499, 2624, 2728, 2806, 2857,
+        2879, 2879, 2857, 2806, 2728, 2624, 2499, 2354,
+        2203, 2048, 1893, 1742, 1591, 1446, 1314, 1190,
+        1077, 976, 889, 816, 758, 717, 693, 688,
+        693, 717, 758, 816, 889, 976, 1077, 1190,
+        1314, 1446, 1591, 1742, 1893, 2048, 2203, 2354,
+        2499, 2624, 2728, 2806, 2857, 2879, 2879, 2857,
+        2806, 2728, 2624, 2499, 2354, 2203, 2048
     );
 
-  -- Clock process
-  clk_process : PROCESS
-  BEGIN
-    clk <= '0';
-    WAIT FOR clk_period / 2;
-    clk <= '1';
-    WAIT FOR clk_period / 2;
-  END PROCESS;
+    -- Variables for the sine wave simulation
+    signal index       : integer := 0;  -- Index for sine lookup
+    signal sine_value  : integer;
 
-  -- Stimulus process
-  stimulus_process : PROCESS
-  BEGIN
-    -- Initialize Inputs
-    reset_n <= '0';
-    ena <= '0';
-    dac_data <= (OTHERS => '0');
+begin
+    -- Instantiate the top_level design
+    uut: top_level port map (
+        CLOCK_50 => CLOCK_50,
+        RST => RST,
+        data_out => data_out,
+        ADC_SDAT => ADC_SDAT,
+        ADC_SADDR => ADC_SADDR,
+        ADC_CS_N => ADC_CS_N,
+        ADC_SCLK => ADC_SCLK,
+        SDA => SDA,
+        SCL => SCL
+    );
 
-    -- Release reset after a few clock cycles
-    WAIT FOR 100 ns;
-    reset_n <= '1';
+    -- Clock generation process
+    clk_process : process
+    begin
+        while true loop
+            CLOCK_50 <= '0';
+            wait for clk_period / 2;
+            CLOCK_50 <= '1';
+            wait for clk_period / 2;
+        end loop;
+    end process;
 
-    -- Change dac_data over time and toggle ena
-    FOR i IN 0 TO 100 LOOP
-      WAIT FOR clk_period * 10;      -- Wait some time before each transaction
-      dac_data <= dac_data + 1;      -- Increment dac_data
-      ena <= '1';                    -- Enable transaction
-      WAIT FOR clk_period;
-      ena <= '0';                    -- Disable after one clock cycle
-      WAIT UNTIL busy = '0';         -- Wait until transaction completes
-    END LOOP;
+    -- Test process to simulate a continuously varying microphone signal
+    stimulus_process : process
+    begin
+        -- Initialize signals
+        RST <= '1';
+        wait for 100 ns; -- Wait for some time before releasing reset
+        
+        -- Release reset
+        RST <= '0';
+        wait for 20 ns;
+        RST <= '1';
 
-    -- Finish simulation
-    WAIT;
-  END PROCESS;
-  
-END behavior;
+        -- Simulate a continuously varying signal
+        while true loop
+            -- Get the sine value from the lookup table
+            sine_value <= sine_table(index);
+            
+            -- Assign the sine value to ADC_SDAT (convert to std_logic)
+            ADC_SDAT <= std_logic(to_unsigned(sine_value, 12)(11)); -- Set the MSB for ADC_SDAT
+            
+            -- Increment index and wrap around
+            index <= (index + 1) mod 64;
+            
+            wait for 40 ns; -- Adjust to simulate sampling rate
+        end loop;
 
+        -- Wait for processing to complete
+        wait for 500 ns;
 
+        -- Finish simulation
+        wait;
+    end process;
+
+end sim;

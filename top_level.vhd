@@ -1,5 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
 library utils;
 use utils.machine_state_type.all;
 
@@ -7,6 +10,7 @@ entity top_level is
 	port (
 		CLOCK_50,
 		RST	: IN STD_LOGIC := '1';
+		data_out : OUT STD_LOGIC_VECTOR(11 downto 0) := (OTHERS => '0');
 		
 		-- ADC SPI Protocal
 		ADC_SDAT   : IN STD_LOGIC;
@@ -22,16 +26,10 @@ entity top_level is
 end top_level;
 
 architecture behavior of top_level is
-
---	type state_type is (RECEIVING_DATA, SENDING_DATA);
---	signal state : state_type := RECEIVING_DATA;
 	
-	signal DATA, temp_DATA, tp_DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '0');
+	signal DATA, temp_DATA, tp: STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '0');
 --	signal DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '1');
---	signal DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000010111010";
-	
-	signal start, done, ddone, virt_clk : std_logic;
-	signal adc_bit_counter : integer range 0 to 11 := 0;
+	signal start, virt_clk, done : std_logic;
 
 begin
 
@@ -51,31 +49,22 @@ begin
 				CLK     => CLOCK_50,
 				sample  => DATA,
 				I2C_SDA => SDA,
-				I2C_SCL => SCL,
-				STATUS  => ddone
+				I2C_SCL => SCL
 			);
-			
-
+	
 	process(CLOCK_50, RST) is
 	begin
 		
 		if RST = '0' then
 			start <= '0';
 			done <= '0';
+			data_out <= (others =>'0');
+
 			
 		elsif rising_edge(CLOCK_50) then
-			start <= '0';
-			tp_DATA <= temp_DATA;
-			
-			if virt_clk = '1' then
-				if adc_bit_counter < 12 then
-					adc_bit_counter <= adc_bit_counter + 1;
-				else
-					adc_bit_counter <= 0;
-					DATA <= tp_DATA;
-					tp_DATA <= (others => '0');
-				end if;
-			end if;
+			start <= '1';
+			data_out <= DATA;
+		
 		end if;
 	end process;
 	

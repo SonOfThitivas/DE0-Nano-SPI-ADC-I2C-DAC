@@ -12,7 +12,6 @@ vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vh
 vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/types.vhdl}
 vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl}
 vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/spi_master.vhd}
-vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/sample_table.vhd}
 vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd}
 vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd}
 vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/adc_process.vhd}

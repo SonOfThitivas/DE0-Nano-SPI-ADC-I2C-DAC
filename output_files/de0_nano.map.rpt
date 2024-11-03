@@ -1,5 +1,5 @@
 Analysis & Synthesis report for de0_nano
-Thu Oct 31 18:28:59 2024
+Sun Nov 03 22:46:07 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -27,9 +27,11 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
  19. Port Connectivity Checks: "mcp4725_dac:dac"
  20. Port Connectivity Checks: "adc_process:adc|de0nano_adc:adc|spi_master:spi_driver"
  21. Port Connectivity Checks: "adc_process:adc|de0nano_adc:adc"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+ 22. Port Connectivity Checks: "adc_process:adc"
+ 23. Port Connectivity Checks: "virtual_clock:vclock"
+ 24. Post-Synthesis Netlist Statistics for Top Partition
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
 
 
 
@@ -56,16 +58,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 31 18:28:59 2024       ;
+; Analysis & Synthesis Status        ; Successful - Sun Nov 03 22:46:07 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; de0_nano                                    ;
 ; Top-level Entity Name              ; top_level                                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 423                                         ;
-;     Total combinational functions  ; 353                                         ;
-;     Dedicated logic registers      ; 236                                         ;
-; Total registers                    ; 236                                         ;
-; Total pins                         ; 8                                           ;
+; Total logic elements               ; 298                                         ;
+;     Total combinational functions  ; 296                                         ;
+;     Dedicated logic registers      ; 143                                         ;
+; Total registers                    ; 143                                         ;
+; Total pins                         ; 20                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -172,8 +174,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-16        ;   0.0%      ;
+;     Processors 2-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -199,30 +200,30 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 423            ;
+; Estimated Total logic elements              ; 298            ;
 ;                                             ;                ;
-; Total combinational functions               ; 353            ;
+; Total combinational functions               ; 296            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 129            ;
-;     -- 3 input functions                    ; 44             ;
-;     -- <=2 input functions                  ; 180            ;
+;     -- 4 input functions                    ; 93             ;
+;     -- 3 input functions                    ; 35             ;
+;     -- <=2 input functions                  ; 168            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 273            ;
+;     -- normal mode                          ; 216            ;
 ;     -- arithmetic mode                      ; 80             ;
 ;                                             ;                ;
-; Total registers                             ; 236            ;
-;     -- Dedicated logic registers            ; 236            ;
+; Total registers                             ; 143            ;
+;     -- Dedicated logic registers            ; 143            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
-; I/O pins                                    ; 8              ;
+; I/O pins                                    ; 20             ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 198            ;
-; Total fan-out                               ; 1759           ;
-; Average fan-out                             ; 2.90           ;
+; Maximum fan-out                             ; 117            ;
+; Total fan-out                               ; 1291           ;
+; Average fan-out                             ; 2.68           ;
 +---------------------------------------------+----------------+
 
 
@@ -231,14 +232,13 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                              ; Entity Name   ; Library Name ;
 +------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
-; |top_level                         ; 353 (18)            ; 236 (28)                  ; 0           ; 0            ; 0       ; 0         ; 8    ; 0            ; |top_level                                                       ; top_level     ; work         ;
-;    |adc_process:adc|               ; 157 (17)            ; 113 (24)                  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc                                       ; adc_process   ; work         ;
-;       |de0nano_adc:adc|            ; 128 (24)            ; 82 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc|de0nano_adc:adc                       ; de0nano_adc   ; work         ;
-;          |spi_master:spi_driver|   ; 104 (104)           ; 68 (68)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver ; spi_master    ; work         ;
+; |top_level                         ; 296 (0)             ; 143 (0)                   ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |top_level                                                       ; top_level     ; work         ;
+;    |adc_process:adc|               ; 154 (17)            ; 77 (12)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc                                       ; adc_process   ; work         ;
+;       |de0nano_adc:adc|            ; 125 (24)            ; 58 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc|de0nano_adc:adc                       ; de0nano_adc   ; work         ;
+;          |spi_master:spi_driver|   ; 101 (101)           ; 44 (44)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver ; spi_master    ; work         ;
 ;       |virtual_clock:vclock|       ; 12 (12)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|adc_process:adc|virtual_clock:vclock                  ; virtual_clock ; utils        ;
-;    |mcp4725_dac:dac|               ; 177 (101)           ; 94 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|mcp4725_dac:dac                                       ; mcp4725_dac   ; work         ;
-;       |i2c_master:i2c_master_inst| ; 76 (76)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst            ; i2c_master    ; work         ;
-;    |virtual_clock:vclock|          ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|virtual_clock:vclock                                  ; virtual_clock ; utils        ;
+;    |mcp4725_dac:dac|               ; 142 (86)            ; 66 (40)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|mcp4725_dac:dac                                       ; mcp4725_dac   ; work         ;
+;       |i2c_master:i2c_master_inst| ; 56 (56)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst            ; i2c_master    ; work         ;
 +------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -293,8 +293,20 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 ; Register name                                                               ; Reason for Removal                                                             ;
 +-----------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+; data_out[0]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[11]~reg0                                                           ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[10]~reg0                                                           ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[9]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[8]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[7]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[6]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[5]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[4]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[3]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[2]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
+; data_out[1]~reg0                                                            ; Stuck at GND due to stuck port data_in                                         ;
 ; mcp4725_dac:dac|rw                                                          ; Stuck at GND due to stuck port data_in                                         ;
-; mcp4725_dac:dac|data_buffer[12..15]                                         ; Stuck at GND due to stuck port data_in                                         ;
+; mcp4725_dac:dac|data_buffer[0..15]                                          ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|adc_addr[0..11]                                             ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[1..3,5..30] ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|last_bit_rx[3]        ; Stuck at GND due to stuck port data_in                                         ;
@@ -303,57 +315,57 @@ Encoding Type:  One-Hot
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[31]         ; Merged with adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[0] ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|slave[0]              ; Merged with adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[0] ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|last_bit_rx[0..2,4]   ; Merged with adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[4] ;
-; virtual_clock:vclock|vclk_cnt[5]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[5]                   ;
-; virtual_clock:vclock|vclk_cnt[4]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[4]                   ;
-; virtual_clock:vclock|vclk_cnt[3]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[3]                   ;
-; virtual_clock:vclock|vclk_cnt[2]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[2]                   ;
-; virtual_clock:vclock|vclk_cnt[1]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[1]                   ;
-; virtual_clock:vclock|vclk_cnt[0]                                            ; Merged with adc_process:adc|virtual_clock:vclock|vclk_cnt[0]                   ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|data_tx[1..7]                    ; Merged with mcp4725_dac:dac|i2c_master:i2c_master_inst|data_tx[0]              ;
+; mcp4725_dac:dac|data_wr[1..7]                                               ; Merged with mcp4725_dac:dac|data_wr[0]                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|continue              ; Stuck at GND due to stuck port data_in                                         ;
 ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[0]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[0..11]      ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|mosi~reg0             ; Stuck at GND due to stuck port data_in                                         ;
 ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[6]                       ; Stuck at VCC due to stuck port data_in                                         ;
+; mcp4725_dac:dac|data_wr[0]                                                  ; Stuck at GND due to stuck port data_in                                         ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|data_tx[0]                       ; Stuck at GND due to stuck port data_in                                         ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[4]          ; Merged with adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[0] ;
 ; adc_process:adc|de0nano_adc:adc|state.busy~reg0                             ; Stuck at GND due to stuck port data_in                                         ;
-; Total Number of Removed Registers = 83                                      ;                                                                                ;
+; Total Number of Removed Registers = 117                                     ;                                                                                ;
 +-----------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                           ;
-+---------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------+
-; Register name                                                       ; Reason for Removal        ; Registers Removed due to This Register                              ;
-+---------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------+
-; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[30] ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|continue,     ;
-;                                                                     ; due to stuck port data_in ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|mosi~reg0     ;
-; mcp4725_dac:dac|rw                                                  ; Stuck at GND              ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[0]               ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[1]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[1]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[0]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[0]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[2]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[2]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[3]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[3]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[4]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[4]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[5]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[5]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[6]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[6]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[7]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[7]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[8]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[8]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[9]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[9]  ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[10]                                        ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[10] ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-; adc_process:adc|adc_addr[11]                                        ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[11] ;
-;                                                                     ; due to stuck port data_in ;                                                                     ;
-+---------------------------------------------------------------------+---------------------------+---------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                         ;
++---------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; Register name                                                       ; Reason for Removal        ; Registers Removed due to This Register                                            ;
++---------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; mcp4725_dac:dac|data_buffer[8]                                      ; Stuck at GND              ; mcp4725_dac:dac|data_wr[0], mcp4725_dac:dac|i2c_master:i2c_master_inst|data_tx[0] ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[30] ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|continue,                   ;
+;                                                                     ; due to stuck port data_in ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|mosi~reg0                   ;
+; mcp4725_dac:dac|rw                                                  ; Stuck at GND              ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[0]                             ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[1]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[1]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[0]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[0]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[2]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[2]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[3]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[3]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[4]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[4]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[5]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[5]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[6]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[6]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[7]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[7]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[8]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[8]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[9]                                         ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[9]                ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[10]                                        ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[10]               ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
+; adc_process:adc|adc_addr[11]                                        ; Stuck at GND              ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|tx_buffer[11]               ;
+;                                                                     ; due to stuck port data_in ;                                                                                   ;
++---------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -361,12 +373,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 236   ;
+; Total registers                              ; 143   ;
 ; Number of registers using Synchronous Clear  ; 5     ;
-; Number of registers using Synchronous Load   ; 4     ;
-; Number of registers using Asynchronous Clear ; 79    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 67    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 190   ;
+; Number of registers using Clock Enable       ; 108   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -377,20 +389,20 @@ Encoding Type:  One-Hot
 ; Inverted Register                                                  ; Fan out ;
 +--------------------------------------------------------------------+---------+
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|busy         ; 1       ;
-; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[0] ; 5       ;
+; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_ratio[0] ; 4       ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|count[0]     ; 2       ;
 ; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|count[31]    ; 2       ;
-; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|ss_n[0]      ; 3       ;
+; adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|ss_n[0]      ; 2       ;
 ; mcp4725_dac:dac|i2c_master:i2c_master_inst|sda_int                 ; 2       ;
-; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[2]              ; 10      ;
-; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[1]              ; 17      ;
-; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[0]              ; 15      ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[2]              ; 8       ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[1]              ; 9       ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[0]              ; 9       ;
 ; mcp4725_dac:dac|wait_cnt[13]                                       ; 2       ;
 ; mcp4725_dac:dac|wait_cnt[10]                                       ; 2       ;
 ; mcp4725_dac:dac|wait_cnt[9]                                        ; 2       ;
 ; mcp4725_dac:dac|wait_cnt[8]                                        ; 2       ;
 ; mcp4725_dac:dac|wait_cnt[4]                                        ; 2       ;
-; mcp4725_dac:dac|i2c_master:i2c_master_inst|busy                    ; 3       ;
+; mcp4725_dac:dac|i2c_master:i2c_master_inst|busy                    ; 2       ;
 ; Total number of inverted registers = 15                            ;         ;
 +--------------------------------------------------------------------+---------+
 
@@ -400,13 +412,11 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst|data_tx[5]                ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_toggles[0] ;
-; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|count[5]       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top_level|mcp4725_dac:dac|data_wr[1]                                           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[1]                ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|clk_toggles[3] ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|count[22]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |top_level|mcp4725_dac:dac|i2c_master:i2c_master_inst|bit_cnt[2]                ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_level|adc_process:adc|de0nano_adc:adc|spi_master:spi_driver|count[0]       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|adc_process:adc|de0nano_adc:adc|Selector2                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|adc_process:adc|de0nano_adc:adc|Selector3                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------+
 
 
@@ -448,6 +458,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port   ; Type   ; Severity ; Details                                                                             ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
+; sample ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; status ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -478,32 +489,50 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adc_process:adc"                                                                            ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_receive ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "virtual_clock:vclock"                                                                   ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; virt_clk ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 8                           ;
-; cycloneiii_ff         ; 236                         ;
+; boundary_port         ; 20                          ;
+; cycloneiii_ff         ; 143                         ;
 ;     CLR               ; 19                          ;
-;     ENA               ; 121                         ;
-;     ENA CLR           ; 60                          ;
+;     ENA               ; 55                          ;
+;     ENA CLR           ; 48                          ;
 ;     ENA SCLR          ; 5                           ;
-;     ENA SLD           ; 4                           ;
-;     plain             ; 27                          ;
+;     plain             ; 16                          ;
 ; cycloneiii_io_obuf    ; 3                           ;
-; cycloneiii_lcell_comb ; 353                         ;
+; cycloneiii_lcell_comb ; 297                         ;
 ;     arith             ; 80                          ;
 ;         2 data inputs ; 78                          ;
 ;         3 data inputs ; 2                           ;
-;     normal            ; 273                         ;
-;         1 data inputs ; 18                          ;
-;         2 data inputs ; 84                          ;
-;         3 data inputs ; 42                          ;
-;         4 data inputs ; 129                         ;
+;     normal            ; 217                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 15                          ;
+;         2 data inputs ; 75                          ;
+;         3 data inputs ; 33                          ;
+;         4 data inputs ; 93                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.10                        ;
-; Average LUT depth     ; 3.29                        ;
+; Average LUT depth     ; 3.68                        ;
 +-----------------------+-----------------------------+
 
 
@@ -522,7 +551,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 31 18:28:45 2024
+    Info: Processing started: Sun Nov 03 22:46:00 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off de0_nano -c de0_nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -550,43 +579,62 @@ Info (12021): Found 2 design units, including 1 entities, in source file de0nano
     Info (12022): Found design unit 1: de0nano_adc-main File: D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd Line: 25
     Info (12023): Found entity 1: de0nano_adc File: D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
-    Info (12022): Found design unit 1: top_level-behavior File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 24
-    Info (12023): Found entity 1: top_level File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 6
-Info (12021): Found 0 design units, including 0 entities, in source file tb_top_level.vhd
+    Info (12022): Found design unit 1: top_level-behavior File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 28
+    Info (12023): Found entity 1: top_level File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file tb_top_level.vhd
+    Info (12022): Found design unit 1: tb_top_level-sim File: D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd Line: 8
+    Info (12023): Found entity 1: tb_top_level File: D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file test.vhd
     Info (12022): Found design unit 1: test-behavior File: D:/Documents/Quartus_files/de0_nano/test.vhd Line: 16
     Info (12023): Found entity 1: test File: D:/Documents/Quartus_files/de0_nano/test.vhd Line: 6
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(33): object "start" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 33
-Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(33): object "done" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 33
-Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(33): object "ddone" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 33
-Info (12128): Elaborating entity "virtual_clock" for hierarchy "virtual_clock:vclock" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 38
-Info (12128): Elaborating entity "adc_process" for hierarchy "adc_process:adc" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 40
+Warning (10540): VHDL Signal Declaration warning at top_level.vhd(30): used explicit default value for signal "DATA" because signal was never assigned a value File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 30
+Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(30): object "temp_DATA" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 30
+Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(32): object "start" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 32
+Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(32): object "virt_clk" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 32
+Warning (10036): Verilog HDL or VHDL warning at top_level.vhd(32): object "done" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 32
+Info (12128): Elaborating entity "virtual_clock" for hierarchy "virtual_clock:vclock" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 36
+Info (12128): Elaborating entity "adc_process" for hierarchy "adc_process:adc" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 38
 Warning (10036): Verilog HDL or VHDL warning at adc_process.vhd(44): object "voltage_level" assigned a value but never read File: D:/Documents/Quartus_files/de0_nano/adc_process.vhd Line: 44
 Info (12128): Elaborating entity "de0nano_adc" for hierarchy "adc_process:adc|de0nano_adc:adc" File: D:/Documents/Quartus_files/de0_nano/adc_process.vhd Line: 35
 Info (12128): Elaborating entity "spi_master" for hierarchy "adc_process:adc|de0nano_adc:adc|spi_master:spi_driver" File: D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd Line: 29
-Info (12128): Elaborating entity "mcp4725_dac" for hierarchy "mcp4725_dac:dac" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 49
-Info (12128): Elaborating entity "i2c_master" for hierarchy "mcp4725_dac:dac|i2c_master:i2c_master_inst" File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 64
+Info (12128): Elaborating entity "mcp4725_dac" for hierarchy "mcp4725_dac:dac" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 47
+Info (12128): Elaborating entity "i2c_master" for hierarchy "mcp4725_dac:dac|i2c_master:i2c_master_inst" File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 39
 Info (13000): Registers with preset signals will power-up high File: D:/Documents/Quartus_files/de0_nano/spi_master.vhd Line: 48
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "data_out[0]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[1]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[2]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[3]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[4]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[5]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[6]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[7]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[8]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[9]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[10]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
+    Warning (13410): Pin "data_out[11]" is stuck at GND File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 58
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[13] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 87
-    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[10] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 87
-    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[9] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 87
-    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[8] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 87
-    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[4] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 87
+    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[13] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 62
+    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[10] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 62
+    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[9] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 62
+    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[8] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 62
+    Critical Warning (18010): Register mcp4725_dac:dac|wait_cnt[4] will power up to High File: D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd Line: 62
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 439 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ADC_SDAT" File: D:/Documents/Quartus_files/de0_nano/top_level.vhd Line: 16
+Info (21057): Implemented 327 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 3 output pins
+    Info (21059): Implemented 15 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 431 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4861 megabytes
-    Info: Processing ended: Thu Oct 31 18:28:59 2024
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:08
+    Info (21061): Implemented 307 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4857 megabytes
+    Info: Processing ended: Sun Nov 03 22:46:07 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:10
 
 

@@ -19,32 +19,7 @@ end mcp4725_dac;
 architecture behavior of mcp4725_dac is
   -- 7-bit I2C device address for MCP4725 (0x60)
   constant I2C_ADDR      : std_logic_vector(6 downto 0) := "1100000";
-  constant I2C_CLK_SPEED : integer                      := 1_000_000; -- I2C speed
---  constant I2C_CLK_SPEED : integer                      := 100_000; -- I2C speed
---	 constant I2C_CLK_SPEED : integer                      := 400_000; -- I2C speed
---	 constant I2C_CLK_SPEED : integer                      := 3_200_000; -- I2C speed
-
---  constant BW        : integer := 12; -- 12 bits for DAC output
---  constant M         : integer := 8;
---  constant MAX_INDEX : integer := 2 ** M - 1;
-
---  subtype sample_t is std_logic_vector((BW - 1) downto 0);
---  type sample_table_t is array(0 to MAX_INDEX) of sample_t;
-
---  function init_table return sample_table_t is
---    variable LUT : sample_table_t;
---    variable x   : REAL;
---  begin
---    for i in 0 to MAX_INDEX loop
---      -- sinusoidal waveform (with DC offset)
---      x      := (1.0 + SIN(2.0 * MATH_PI * real(i) / real(2**M)))/2.0;
---      LUT(i) := std_logic_vector(to_unsigned(integer(x * real(2**BW - 1)), 12));
---    end loop;
---    return LUT;
---  end function;
-
---  signal sample_table : sample_table_t               := init_table;
---  signal sample_index : integer range 0 to MAX_INDEX := 0;
+  constant I2C_CLK_SPEED : integer                      :=  1_000_000; -- I2C speed
 
   type state_type is (ST_IDLE, ST_START, ST_WR_1, ST_WR_2, ST_STOP);
   signal state : state_type := ST_IDLE;
