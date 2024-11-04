@@ -19,7 +19,7 @@ state.slv_ack2 0 0 1 0 0 0 0 0 1
 state.mstr_ack 0 1 0 0 0 0 0 0 1 
 state.stop 1 0 0 0 0 0 0 0 1 
 
-State Machine - |top_level|adc_process:adc|de0nano_adc:adc|state
+State Machine - |top_level|de0nano_adc:adc|state
 Name state.busy~reg0 state.execute~reg0 state.ready~reg0 state.initialize~reg0 
 state.initialize~reg0 0 0 0 0 
 state.ready~reg0 0 0 1 1 

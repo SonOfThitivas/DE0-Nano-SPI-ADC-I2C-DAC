@@ -7,8 +7,8 @@ use utils.machine_state_type.all;
 entity de0nano_adc is
     PORT (
         run             : IN STD_LOGIC := '0';
-        input           : IN  STD_LOGIC_VECTOR(11 downto 0);
-        output          : OUT STD_LOGIC_VECTOR(11 downto 0);
+        input           : IN  STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+        output          : OUT STD_LOGIC_VECTOR(15 downto 0);
 
         state           : BUFFER machine_state_type := initialize;
         virt_clk        : IN STD_LOGIC := '0';
@@ -26,7 +26,7 @@ architecture main of de0nano_adc is
     signal ADC_CS, enable, reset : STD_LOGIC := '0';
 begin
 
-    spi_driver : entity work.spi_master GENERIC MAP (slaves => 1, d_width => 12) PORT MAP (
+    spi_driver : entity work.spi_master GENERIC MAP (slaves => 1, d_width => 16) PORT MAP (
         clock => CLOCK_50, enable => enable, cont => '0',
         reset_n => reset, cpol => '0', cpha => '0', addr => 0,
         tx_data => input, rx_data => output, clk_div => 16,
