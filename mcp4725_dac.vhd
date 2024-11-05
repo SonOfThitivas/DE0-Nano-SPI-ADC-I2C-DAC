@@ -9,18 +9,18 @@ entity mcp4725_dac is
   port (
     NRESET  : in std_logic;
     CLK     : in std_logic;
---	 sample_table : in sample_table_t := (others => (others => '0'));
 	 sample  : in std_logic_vector(11 downto 0);
     I2C_SDA : inout std_logic;
     I2C_SCL : inout std_logic;
-    STATUS  : out std_logic
+    STATUS  : out std_logic;
+	 ADC_CLK : in integer := 100_000
   );
 end mcp4725_dac;
 
 architecture behavior of mcp4725_dac is
   -- 7-bit I2C device address for MCP4725 (0x60)
   constant I2C_ADDR      : std_logic_vector(6 downto 0) := "1100000";
-  constant I2C_CLK_SPEED : integer                      :=  1_000_000; -- I2C speed
+  constant I2C_CLK_SPEED : integer                      :=  ADC_CLK; -- I2C speed
 
   type state_type is (ST_IDLE, ST_START, ST_WR_1, ST_WR_2, ST_STOP);
   signal state : state_type := ST_IDLE;
@@ -66,13 +66,10 @@ begin
       ena          <= '0';
       rw           <= '0';
       busy_prev    <= (others => '0');
---      sample_index <= 0;
       wait_cnt     <= 10000;
 
     elsif rising_edge(CLK) then
 	 
---		if adc_state = execute then
-
 			busy_prev <= busy_prev(0) & busy;
 
 			case state is
@@ -107,11 +104,6 @@ begin
 					ena <= '0';
 				 elsif busy_prev = "10" then -- busy goes low
 					if ack_error = '0' then -- ACK
-	--              if sample_index = MAX_INDEX then
-	--                sample_index <= 0;
-	--              else
-	--                sample_index <= sample_index + 1;
-	--              end if;
 					  state <= ST_IDLE;
 					else -- No ACK
 					  state <= ST_STOP;
@@ -123,7 +115,6 @@ begin
 					wait_cnt     <= 10000;
 					ena          <= '0';
 					state        <= ST_IDLE;
-	--            sample_index <= 0;
 				 else
 					wait_cnt <= wait_cnt - 1;
 				 end if;
@@ -133,7 +124,6 @@ begin
 
 			end case;
 			
---		end if;
     end if;
   end process;
 

@@ -1,151 +1,97 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-use ieee.math_real.all;
+--use ieee.numeric_std.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+library utils;
+use utils.machine_state_type.all;
 
 entity test is
-  port (
-    NRESET  : in std_logic;
-    CLK     : in std_logic;
-    I2C_SDA : inout std_logic;
-    I2C_SCL : inout std_logic;
-    STATUS  : out std_logic
-  );
+	port (
+		CLOCK_50,
+		RST	: IN STD_LOGIC := '1';
+		data_out : OUT STD_LOGIC_VECTOR(11 downto 0) := (OTHERS => '0');
+		
+		-- ADC SPI Protocal
+		ADC_SDAT   : IN STD_LOGIC;
+      ADC_SADDR,
+      ADC_CS_N,
+      ADC_SCLK   : OUT STD_LOGIC;
+		
+		-- DAC I2C Protocal
+		SDA,
+		SCL	: INOUT STD_LOGIC
+	);
+	
 end test;
 
 architecture behavior of test is
-  -- 7-bit I2C device address for MCP4725 (0x60)
-  constant I2C_ADDR      : std_logic_vector(6 downto 0) := "1100000";
-  constant I2C_CLK_SPEED : integer := 1_000_000; -- I2C speed
-
-  constant BW        : integer := 12; -- 12 bits for DAC output
-  constant M         : integer := 8;
-  constant MAX_INDEX : integer := 2 ** M - 1;
-
-  subtype sample_t is std_logic_vector((BW - 1) downto 0);
-  type sample_table_t is array(0 to MAX_INDEX) of sample_t;
-
-  function init_table return sample_table_t is
-    variable LUT : sample_table_t;
-    variable x   : REAL;
-  begin
-    for i in 0 to MAX_INDEX loop
-      -- staircase function (16 levels)
-      LUT(i) := std_logic_vector(to_unsigned(i mod 16, 4)) & x"ff";
-    end loop;
-    return LUT;
-  end function;
-
-  signal sample_table : sample_table_t               := init_table;
-  signal sample_index : integer range 0 to MAX_INDEX := 0;
-
-  type state_type is (ST_IDLE, ST_START, ST_WR_1, ST_WR_2, ST_STOP);
-  signal state : state_type := ST_IDLE;
-
-  signal busy        : std_logic;
-  signal ack_error   : std_logic;
-  signal ena         : std_logic := '0';
-  signal rw          : std_logic := '0';
-  signal data_wr     : std_logic_vector(7 downto 0);
-  signal data_buffer : std_logic_vector(15 downto 0);
-  signal busy_prev   : std_logic_vector(1 downto 0);
-  signal wait_cnt    : integer := 0;
+	
+	signal channel	:	STD_LOGIC_VECTOR(2 downto 0)	:= "000";
+	signal DATA, temp_DATA, tp: STD_LOGIC_VECTOR(15 DOWNTO 0) := (others => '0');
+--	signal DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '1');
+	signal start,
+			 virt_clk,
+			 done,
+			 adc_run : std_logic := '0';
+	signal state,
+			 state_process:	machine_state_type := initialize;
 
 begin
 
-  -- I2C Master Instantiation
-  i2c_master_inst : entity work.i2c_master
-    generic map (
-      input_clk => 50_000_000, -- Assume system clock of 50 MHz
-      bus_clk   => I2C_CLK_SPEED
-    )
-    port map (
-      clk       => CLK,
-      reset_n   => NRESET,
-      ena       => ena,
-      addr      => I2C_ADDR,
-      rw        => rw,
-      data_wr   => data_wr,
-      busy      => busy,
-      ack_error => ack_error,
-      sda       => I2C_SDA,
-      scl       => I2C_SCL
-    );
+	vclock : entity utils.virtual_clock PORT MAP (CLOCK_50 => CLOCK_50, virt_clk => virt_clk);
+	
+	adc : entity work.de0nano_adc port map(
+				run            	=> adc_run,
+				input(2 downto 0) => channel,
+				output          	=> DATA,
+				state           	=> state,
+				virt_clk        	=> virt_clk,
+				CLOCK_50        	=> CLOCK_50,
+				ADC_SDAT        	=> ADC_SDAT,
+				ADC_SCLK				=> ADC_SCLK,
+				ADC_SADDR			=> ADC_SADDR,
+				ADC_CS_N        	=> ADC_CS_N
+			);
+			
+	dac : entity work.mcp4725_dac port map(
+				NRESET  => RST,
+				CLK     => CLOCK_50,
+				sample  => temp_DATA(11 downto 0),
+				I2C_SDA => SDA,
+				I2C_SCL => SCL
+			);
 
-  STATUS <= busy; -- Use the STATUS output to monitor the busy signal
+	state_process <= state;
+	
+	process(CLOCK_50, RST) is
+	begin
+		
+		if RST = '0' then
+			start <= '0';
+			done <= '0';
+			data_out <= (others =>'0');
 
-  process (NRESET, CLK)
-  begin
-    if NRESET = '0' then
-      state        <= ST_IDLE;
-      ena          <= '0';
-      rw           <= '0';
-      busy_prev    <= (others => '0');
-      sample_index <= 0;
-      wait_cnt     <= 10000;
+			
+		elsif rising_edge(CLOCK_50) then
 
-    elsif rising_edge(CLK) then
-
-      busy_prev <= busy_prev(0) & busy;
-
-      case state is
-        when ST_IDLE =>
-          -- Prepare the data (Fast Write Mode)
-          data_buffer <= "0000" & sample_table(sample_index);
-          state       <= ST_START;
-          ena         <= '0';
-
-        when ST_START =>
-          -- Set up for I2C transmission  
-          ena     <= '1'; -- Start I2C transaction
-          rw      <= '0'; -- write operation  
-          data_wr <= data_buffer(15 downto 8); -- the high byte 
-          state   <= ST_WR_1;
-
-        when ST_WR_1 =>
-          if I2C_SCL = '0' and busy = '1' then
-            data_wr <= data_buffer(7 downto 0); -- the low byte         
-          end if;
-          if busy_prev = "10" then -- busy goes low
-            if ack_error = '0' then -- ACK
-              state <= ST_WR_2;
-            else -- No ACK
-              ena   <= '0';
-              state <= ST_STOP;
-            end if;
-          end if;
-
-        when ST_WR_2 =>
-          if busy_prev = "01" then -- busy goes high
-            ena <= '0';
-          elsif busy_prev = "10" then -- busy goes low
-            if ack_error = '0' then -- ACK
-              if sample_index = MAX_INDEX then
-                sample_index <= 0;
-              else
-                sample_index <= sample_index + 1;
-              end if;
-              state <= ST_IDLE;
-            else -- No ACK
-              state <= ST_STOP;
-            end if;
-          end if;
-
-        when ST_STOP =>
-          if wait_cnt = 0 then
-            wait_cnt     <= 100000000;
-            ena          <= '0';
-            state        <= ST_IDLE;
-            sample_index <= 0;
-          else
-            wait_cnt <= wait_cnt - 1;
-          end if;
-
-        when others =>
-          state <= ST_IDLE;
-
-      end case;
-    end if;
-  end process;
-
+			case state_process is
+				when initialize =>
+				when ready =>
+						data_out <= DATA(11 downto 0);
+						adc_run <= '1';
+						temp_DATA <= DATA;			-- ADC Data to DAC Data
+						
+--						temp_DATA <= conv_std_logic_vector(conv_integer(DATA) / 2, 16);
+--						temp_DATA <= conv_std_logic_vector(conv_integer(DATA) * 1, 16);
+--						temp_DATA <= std_logic_vector(shift_left(unsigned(DATA), 1));
+				when execute =>
+						adc_run <= '0';
+						
+				when others =>
+				end case;
+		end if;
+	end process;
+	
 end behavior;
