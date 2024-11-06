@@ -1,5 +1,5 @@
 Analysis & Synthesis report for de0_nano
-Wed Nov 06 01:14:43 2024
+Wed Nov 06 10:08:13 2024
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -58,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Nov 06 01:14:43 2024       ;
+; Analysis & Synthesis Status        ; Successful - Wed Nov 06 10:08:13 2024       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; de0_nano                                    ;
 ; Top-level Entity Name              ; top_level                                   ;
@@ -316,9 +316,9 @@ Encoding Type:  One-Hot
 ; mcp4725_dac:dac|data_buffer[12..15]                         ; Stuck at GND due to stuck port data_in                            ;
 ; de0nano_adc:adc|spi_master:spi_driver|clk_ratio[1..3,5..30] ; Stuck at GND due to stuck port data_in                            ;
 ; de0nano_adc:adc|spi_master:spi_driver|last_bit_rx[5]        ; Stuck at GND due to stuck port data_in                            ;
+; led8[7]~reg0                                                ; Merged with led8[0]~reg0                                          ;
 ; led8[5]~reg0                                                ; Merged with led8[4]~reg0                                          ;
 ; led8[6]~reg0                                                ; Merged with led8[4]~reg0                                          ;
-; led8[7]~reg0                                                ; Merged with led8[4]~reg0                                          ;
 ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[7]       ; Merged with mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[6] ;
 ; mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[1..5]    ; Merged with mcp4725_dac:dac|i2c_master:i2c_master_inst|addr_rw[0] ;
 ; CLK_ADJUST:CLOCK_ADJ|DAC_CLK[1..4,22..31]                   ; Merged with CLK_ADJUST:CLOCK_ADJ|DAC_CLK[0]                       ;
@@ -597,7 +597,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Nov 06 01:14:35 2024
+    Info: Processing started: Wed Nov 06 10:07:58 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off de0_nano -c de0_nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -694,9 +694,9 @@ Info (21057): Implemented 849 device resources after synthesis - the final resou
     Info (21060): Implemented 2 bidirectional pins
     Info (21061): Implemented 830 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4864 megabytes
-    Info: Processing ended: Wed Nov 06 01:14:43 2024
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 4869 megabytes
+    Info: Processing ended: Wed Nov 06 10:08:13 2024
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:08
 
 

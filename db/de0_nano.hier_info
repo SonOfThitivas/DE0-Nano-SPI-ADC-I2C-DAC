@@ -37,14 +37,14 @@ incr => clk_adjust:CLOCK_ADJ.incr
 incr => process_0.IN0
 decr => clk_adjust:CLOCK_ADJ.decr
 decr => process_0.IN1
-led8[0] << led8[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[1] << led8[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[2] << led8[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[3] << led8[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[4] << led8[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[5] << led8[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[6] << led8[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-led8[7] << led8[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[0] <= led8[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[1] <= led8[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[2] <= led8[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[3] <= led8[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[4] <= led8[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[5] <= led8[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[6] <= led8[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led8[7] <= led8[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ssw[0] => Mux0.IN2
 ssw[0] => Mux1.IN2
 ssw[0] => Mux2.IN2
@@ -80,9 +80,9 @@ ssw[1] => Mux14.IN3
 ssw[1] => Mux15.IN3
 ssw[1] => clk_adjust:CLOCK_ADJ.ssw[1]
 ADC_SDAT => de0nano_adc:adc.ADC_SDAT
-ADC_SADDR << de0nano_adc:adc.ADC_SADDR
-ADC_CS_N << de0nano_adc:adc.ADC_CS_N
-ADC_SCLK << de0nano_adc:adc.ADC_SCLK
+ADC_SADDR <= de0nano_adc:adc.ADC_SADDR
+ADC_CS_N <= de0nano_adc:adc.ADC_CS_N
+ADC_SCLK <= de0nano_adc:adc.ADC_SCLK
 SDA <> mcp4725_dac:dac.I2C_SDA
 SCL <> mcp4725_dac:dac.I2C_SCL
 

@@ -124,10 +124,10 @@ begin
 					
 				when "11"	=>						-- DAC
 					case DAC_CLK is
-						when 100_000	=> led8 <= "00000001";	-- Standard Mode
-						when 400_000	=> led8 <= "00000011";	-- Fast Mode
-						when 1_700_000	=> led8 <= "00000111";	-- High Speed Mode
-						when 3_400_000	=> led8 <= "00001111";	-- High Speed Mode
+						when 100_000	=> led8 <= "10000001";	-- Standard Mode
+						when 400_000	=> led8 <= "10000011";	-- Fast Mode
+						when 1_700_000	=> led8 <= "10000111";	-- High Speed Mode
+						when 3_400_000	=> led8 <= "10001111";	-- High Speed Mode
 						when others =>
 					end case;
 					
