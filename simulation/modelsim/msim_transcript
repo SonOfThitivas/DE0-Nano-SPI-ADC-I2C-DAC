@@ -10,10 +10,10 @@
 # Copying D:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/i2c_master.vhd}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/i2c_master.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:07 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/i2c_master.vhd 
+# Start time: 10:22:57 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/i2c_master.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -21,10 +21,10 @@
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Compiling entity i2c_master
 # -- Compiling architecture logic of i2c_master
-# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(59): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(62): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(65): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# End time: 12:36:07 on Nov 01,2024, Elapsed time: 0:00:00
+# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(59): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(62): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+# ** Warning: D:/Documents/Quartus_files/de0_nano/i2c_master.vhd(65): (vcom-1937) Choice in ordinary CASE statement alternative must be locally static.
+# End time: 10:22:57 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 3
 # vlib utils
 # ** Warning: (vlib-34) Library already exists at "utils".
@@ -32,44 +32,34 @@
 # Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
 # vmap utils utils 
 # Modifying modelsim.ini
-# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl}
+# vcom -2008 -work utils {D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:07 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl 
+# Start time: 10:22:58 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work utils D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity virtual_clock
 # -- Compiling architecture vclock of virtual_clock
-# End time: 12:36:07 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:58 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/types.vhdl}
+# vcom -2008 -work utils {D:/Documents/Quartus_files/de0_nano/utils/types.vhdl}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/types.vhdl 
+# Start time: 10:22:58 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work utils D:/Documents/Quartus_files/de0_nano/utils/types.vhdl 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling package machine_state_type
 # -- Compiling package body machine_state_type
 # -- Loading package machine_state_type
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:58 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work utils {D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/spi_master.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work utils D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling package fonts
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/spi_master.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/spi_master.vhd 
+# Start time: 10:22:58 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/spi_master.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -77,27 +67,28 @@
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Compiling entity spi_master
 # -- Compiling architecture logic of spi_master
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:58 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd 
+# Start time: 10:22:58 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
+# -- Loading package machine_state_type
 # -- Compiling entity mcp4725_dac
 # -- Compiling architecture behavior of mcp4725_dac
 # -- Loading package std_logic_arith
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Loading entity i2c_master
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:58 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd 
+# Start time: 10:22:58 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -108,29 +99,12 @@
 # -- Loading package std_logic_arith
 # -- Loading package STD_LOGIC_UNSIGNED
 # -- Loading entity spi_master
-# ** Warning: D:/Documents/Quartus_files/de0_nano/de0nano_adc.vhd(35): Cannot associate port "sclk" of mode BUFFER with port "ADC_SCLK" of mode OUT.
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/adc_process.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/adc_process.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Loading package machine_state_type
-# -- Loading package fonts
-# -- Compiling entity adc_process
-# -- Compiling architecture main of adc_process
-# -- Loading entity virtual_clock
-# -- Loading entity de0nano_adc
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:59 on Nov 07,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/top_level.vhd}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/top_level.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/top_level.vhd 
+# Start time: 10:22:59 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/top_level.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
@@ -138,37 +112,35 @@
 # -- Compiling entity top_level
 # -- Compiling architecture behavior of top_level
 # -- Loading package NUMERIC_STD
-# -- Loading package fonts
-# -- Loading entity adc_process
+# -- Loading entity virtual_clock
+# -- Loading entity de0nano_adc
 # -- Loading entity mcp4725_dac
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:59 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd}
+# vcom -2008 -work work {D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 12:36:08 on Nov 01,2024
-# vcom -reportprogress 300 -93 -work work D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd 
+# Start time: 10:22:59 on Nov 07,2024
+# vcom -reportprogress 300 -2008 -work work D:/Documents/Quartus_files/de0_nano/tb_top_level.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity tb_top_level
 # -- Compiling architecture sim of tb_top_level
-# End time: 12:36:08 on Nov 01,2024, Elapsed time: 0:00:00
+# End time: 10:22:59 on Nov 07,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -L utils -voptargs="+acc"  tb_top_level
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -L utils -voptargs=""+acc"" tb_top_level 
-# Start time: 12:36:08 on Nov 01,2024
+# Start time: 10:22:59 on Nov 07,2024
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading work.tb_top_level(sim)
 # Loading utils.machine_state_type(body)
-# Loading utils.fonts
 # Loading work.top_level(behavior)
-# Loading work.adc_process(main)
 # Loading utils.virtual_clock(vclock)
 # Loading ieee.std_logic_arith(body)
 # Loading ieee.std_logic_unsigned(body)
@@ -183,9 +155,8 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# ** Error: (vsim-86) Argument value -2147483648 is not in bounds of subtype NATURAL.
-#    Time: 120 ns  Iteration: 0  Instance: /tb_top_level
+# Can't move the Now cursor.
 # Break key hit
-# Break in Process line__85 at D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd line 99
-# End time: 12:36:41 on Nov 01,2024, Elapsed time: 0:00:33
-# Errors: 1, Warnings: 0
+# Break in Process line__62 at D:/Documents/Quartus_files/de0_nano/mcp4725_dac.vhd line 62
+# End time: 10:23:43 on Nov 07,2024, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 0

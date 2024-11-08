@@ -8,11 +8,13 @@ USE ieee.std_logic_unsigned.all;
 
 ENTITY i2c_master IS
   GENERIC(
-    input_clk : INTEGER := 50_000_000; --input clock speed from user logic in Hz
-    bus_clk   : INTEGER := 400_000);   --speed the i2c bus (scl) will run at in Hz
+    input_clk : INTEGER := 50_000_000 --input clock speed from user logic in Hz
+--    ;bus_clk   : INTEGER := 400_000   --speed the i2c bus (scl) will run at in Hz
+	 );
   PORT(
     clk       : IN     STD_LOGIC;                    --system clock
     reset_n   : IN     STD_LOGIC;                    --active low reset
+	 bus_clk   : IN	  INTEGER;							  --speed the i2c bus (scl) will run at in Hz
     ena       : IN     STD_LOGIC;                    --latch in command
     addr      : IN     STD_LOGIC_VECTOR(6 DOWNTO 0); --address of target slave
     rw        : IN     STD_LOGIC;                    --'0' is write, '1' is read
@@ -21,11 +23,12 @@ ENTITY i2c_master IS
     data_rd   : OUT    STD_LOGIC_VECTOR(7 DOWNTO 0); --data read from slave
     ack_error : BUFFER STD_LOGIC;                    --flag if improper acknowledge from slave
     sda       : INOUT  STD_LOGIC;                    --serial data output of i2c bus
-    scl       : INOUT  STD_LOGIC);                   --serial clock output of i2c bus
+    scl       : INOUT  STD_LOGIC;
+	 incr, decr: IN 	  STD_LOGIC);                   --serial clock output of i2c bus
 END i2c_master;
 
 ARCHITECTURE logic OF i2c_master IS
-  CONSTANT divider  :  INTEGER := (input_clk/bus_clk)/4; --number of clocks in 1/4 cycle of scl
+--  CONSTANT divider  :  INTEGER := (input_clk/bus_clk)/4; --number of clocks in 1/4 cycle of scl
   TYPE machine IS(ready, start, command, slv_ack1, wr, rd, slv_ack2, mstr_ack, stop); --needed states
   SIGNAL state         : machine;                        --state machine
   SIGNAL data_clk      : STD_LOGIC;                      --data clock for sda
@@ -39,48 +42,79 @@ ARCHITECTURE logic OF i2c_master IS
   SIGNAL data_rx       : STD_LOGIC_VECTOR(7 DOWNTO 0);   --data received from slave
   SIGNAL bit_cnt       : INTEGER RANGE 0 TO 7 := 7;      --tracks bit number in transaction
   SIGNAL stretch       : STD_LOGIC := '0';               --identifies if slave is stretching scl
+  SIGNAL prev_incr,
+			prev_decr	  : STD_LOGIC := '1';
 BEGIN
 
   --generate the timing for the bus clock (scl_clk) and the data clock (data_clk)
   PROCESS (clk, reset_n)
-    VARIABLE count :  INTEGER RANGE 0 TO divider*4;  --timing for clock generation
+	 VARIABLE divider  :  INTEGER := (input_clk/bus_clk)/4; --number of clocks in 1/4 cycle of scl
+--    VARIABLE count :  INTEGER RANGE 0 TO divider*4;  --timing for clock generation
+	 VARIABLE count	 :	 INTEGER;
   BEGIN
-    IF (reset_n = '0') THEN                --reset asserted
+    IF (reset_n = '0' or
+		 (incr = '0' and prev_incr = '1') or
+		 (decr = '0' and prev_decr = '1')) THEN                --reset asserted
       stretch <= '0';
       count := 0;
     ELSIF (clk'EVENT AND clk = '1') THEN
+		prev_incr <= incr;
+		prev_decr <= decr;
+		divider := (input_clk / bus_clk) / 4;
+	 
       data_clk_prev <= data_clk;          --store previous value of data clock
       IF (count = divider*4-1) THEN        --end of timing cycle
         count := 0;                       --reset timer
       ELSIF (stretch = '0') THEN           --clock stretching from slave not detected
         count := count + 1;               --continue clock generation timing
       END IF;
-      CASE count IS
-        WHEN 0 TO divider-1 =>            --first 1/4 cycle of clocking
-          scl_clk <= '0';
-          data_clk <= '0';
-        WHEN divider TO divider*2-1 =>    --second 1/4 cycle of clocking
-          scl_clk <= '0';
-          data_clk <= '1';
-        WHEN divider*2 TO divider*3-1 =>  --third 1/4 cycle of clocking
-          scl_clk <= '1';                 --release scl
-          IF(scl = '0') THEN              --detect if slave is stretching clock
+--      CASE count IS
+--        WHEN 0 TO divider-1 =>            --first 1/4 cycle of clocking
+--          scl_clk <= '0';
+--          data_clk <= '0';
+--        WHEN divider TO divider*2-1 =>    --second 1/4 cycle of clocking
+--          scl_clk <= '0';
+--          data_clk <= '1';
+--        WHEN divider*2 TO divider*3-1 =>  --third 1/4 cycle of clocking
+--          scl_clk <= '1';                 --release scl
+--          IF(scl = '0') THEN              --detect if slave is stretching clock
+--            stretch <= '1';
+--          ELSE
+--            stretch <= '0';
+--          END IF;
+--          data_clk <= '1';
+--        WHEN OTHERS =>                    --last 1/4 cycle of clocking
+--          scl_clk <= '1';
+--          data_clk <= '0';
+--      END CASE;
+
+		IF count >= 0 and count <= divider-1 THEN
+			scl_clk <= '0';
+         data_clk <= '0';
+		ELSIF count >= divider and count <= divider*2-1 THEN
+			scl_clk <= '0';
+         data_clk <= '1';
+		ELSIF count >= divider*2 and count <= divider*3-1 THEN
+			scl_clk <= '1';                 --release scl
+         IF(scl = '0') THEN              --detect if slave is stretching clock
             stretch <= '1';
-          ELSE
+         ELSE
             stretch <= '0';
-          END IF;
-          data_clk <= '1';
-        WHEN OTHERS =>                    --last 1/4 cycle of clocking
-          scl_clk <= '1';
-          data_clk <= '0';
-      END CASE;
+         END IF;
+            data_clk <= '1';
+		ELSE
+			scl_clk <= '1';
+         data_clk <= '0';
+		END IF;	
     END IF;
   END PROCESS;
 
   --state machine and writing to sda during scl low (data_clk rising edge)
   PROCESS (clk, reset_n)
   BEGIN
-    IF (reset_n = '0') THEN                 --reset asserted
+    IF (reset_n = '0' or
+		 (incr = '0' and prev_incr = '1') or
+		 (decr = '0' and prev_decr = '1')) THEN                 --reset asserted
       state <= ready;                      --return to initial state
       busy <= '1';                         --indicate not available
       scl_ena <= '0';                      --sets scl high impedance
@@ -220,4 +254,3 @@ BEGIN
   sda <= '0' WHEN sda_ena_n = '0' ELSE 'Z';
   
 END logic;
-

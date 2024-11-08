@@ -1,18 +1,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-use ieee.std_logic_unsigned.all;
---use ieee.numeric_std.all;
-
 library utils;
 use utils.machine_state_type.all;
 
 entity top_level is
 	port (
-		CLOCK_50,
-		RST	: IN STD_LOGIC := '1';
-		data_out : OUT STD_LOGIC_VECTOR(11 downto 0) := (OTHERS => '0');
+		CLOCK_50		: IN STD_LOGIC;
+		RST,
+		incr,
+		decr			: IN STD_LOGIC := '1';
 		
+		LED8			: OUT STD_LOGIC_VECTOR(7 downto 0);
+
 		-- ADC SPI Protocal
 		ADC_SDAT   : IN STD_LOGIC;
       ADC_SADDR,
@@ -29,23 +28,41 @@ end top_level;
 architecture behavior of top_level is
 	
 	signal channel	:	STD_LOGIC_VECTOR(2 downto 0)	:= "000";
-	signal DATA, temp_DATA, tp: STD_LOGIC_VECTOR(15 DOWNTO 0) := (others => '0');
---	signal DATA : STD_LOGIC_VECTOR(11 DOWNTO 0) := (others => '1');
-	signal start,
-			 virt_clk,
-			 done,
+
+	signal ADC_DATA,
+			 DAC_DATA: STD_LOGIC_VECTOR(15 DOWNTO 0) := (others => '0');
+
+	signal virt_clk,
 			 adc_run : std_logic := '0';
+			 
 	signal state,
 			 state_process:	machine_state_type := initialize;
+			 
+	signal I2C_CLK_SPEED : INTEGER := 400_000;
+	
+	signal btn,																				-- (incr, derc)
+			 debnce_btn		: STD_LOGIC_VECTOR(1 downto 0);						-- debouncing
 
-begin
-
+begin	
+	
+	btn(1) <= incr;			-- read button key value
+	btn(0) <= decr;
+	
+	-- debouncing DE0-Nano key button
+	debnce : entity work.Debounce_Multi_Input port map(
+				i_Clk			=> CLOCK_50,
+				i_Switches	=> btn,
+				o_Switches	=> debnce_btn
+			);
+	
+	-- virtual clock
 	vclock : entity utils.virtual_clock PORT MAP (CLOCK_50 => CLOCK_50, virt_clk => virt_clk);
 	
+	-- ADC read analog data
 	adc : entity work.de0nano_adc port map(
 				run            	=> adc_run,
 				input(2 downto 0) => channel,
-				output          	=> DATA,
+				output          	=> ADC_DATA,
 				state           	=> state,
 				virt_clk        	=> virt_clk,
 				CLOCK_50        	=> CLOCK_50,
@@ -54,37 +71,44 @@ begin
 				ADC_SADDR			=> ADC_SADDR,
 				ADC_CS_N        	=> ADC_CS_N
 			);
-			
+	
+	-- DAC write 12-bit data
 	dac : entity work.mcp4725_dac port map(
 				NRESET  => RST,
 				CLK     => CLOCK_50,
-				sample  => temp_DATA(11 downto 0),
+				sample  => DAC_DATA(11 downto 0),
 				I2C_SDA => SDA,
-				I2C_SCL => SCL
+				I2C_SCL => SCL,
+				I2C_CLK_SPEED => I2C_CLK_SPEED,
+				incr	=>	debnce_btn(1),
+				decr	=> debnce_btn(0)
 			);
-
-	state_process <= state;
+	
+	-- ADJUSTING I2C_CLK_SPEED
+	clk_adj : entity work.CLK_ADJUST port map(
+				CLOCK_50     	=> CLOCK_50,
+				RST				=> RST,
+				incr				=> debnce_btn(1),
+				decr           => debnce_btn(0),
+				LED8				=> LED8,
+				I2C_CLK_SPEED	=> I2C_CLK_SPEED
+			);
+	
+	state_process <= state;				-- dummy variable of state
 	
 	process(CLOCK_50, RST) is
 	begin
 		
 		if RST = '0' then
-			start <= '0';
-			done <= '0';
-			data_out <= (others =>'0');
-
 			
 		elsif rising_edge(CLOCK_50) then
 
 			case state_process is
 				when initialize =>
 				when ready =>
-						data_out <= DATA(15 downto 4);
 						adc_run <= '1';
-						temp_DATA <= DATA;			-- ADC Data to DAC Data
+						DAC_DATA <= ADC_DATA;
 						
---						temp_DATA <= conv_std_logic_vector(conv_integer(DATA) * 1, 16);
---						temp_DATA <= std_logic_vector(shift_left(unsigned(DATA), 1));
 				when execute =>
 						adc_run <= '0';
 						

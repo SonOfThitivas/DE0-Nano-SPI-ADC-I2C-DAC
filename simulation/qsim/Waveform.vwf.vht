@@ -19,7 +19,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "10/23/2024 20:03:27"
+-- Generated on "11/07/2024 17:40:31"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          top_level
 -- 
@@ -35,19 +35,29 @@ ARCHITECTURE top_level_arch OF top_level_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
 SIGNAL ADC_CS_N : STD_LOGIC;
-SIGNAL adc_data_out : STD_LOGIC_VECTOR(15 DOWNTO 0);
 SIGNAL ADC_SADDR : STD_LOGIC;
 SIGNAL ADC_SCLK : STD_LOGIC;
 SIGNAL ADC_SDAT : STD_LOGIC;
 SIGNAL CLOCK_50 : STD_LOGIC;
+SIGNAL decr : STD_LOGIC;
+SIGNAL incr : STD_LOGIC;
+SIGNAL LED8 : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL RST : STD_LOGIC;
+SIGNAL SCL : STD_LOGIC;
+SIGNAL SDA : STD_LOGIC;
 COMPONENT top_level
 	PORT (
 	ADC_CS_N : OUT STD_LOGIC;
-	adc_data_out : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
 	ADC_SADDR : OUT STD_LOGIC;
 	ADC_SCLK : OUT STD_LOGIC;
 	ADC_SDAT : IN STD_LOGIC;
-	CLOCK_50 : IN STD_LOGIC
+	CLOCK_50 : IN STD_LOGIC;
+	decr : IN STD_LOGIC;
+	incr : IN STD_LOGIC;
+	LED8 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	RST : IN STD_LOGIC;
+	SCL : INOUT STD_LOGIC;
+	SDA : INOUT STD_LOGIC
 	);
 END COMPONENT;
 BEGIN
@@ -55,12 +65,24 @@ BEGIN
 	PORT MAP (
 -- list connections between master ports and signals
 	ADC_CS_N => ADC_CS_N,
-	adc_data_out => adc_data_out,
 	ADC_SADDR => ADC_SADDR,
 	ADC_SCLK => ADC_SCLK,
 	ADC_SDAT => ADC_SDAT,
-	CLOCK_50 => CLOCK_50
+	CLOCK_50 => CLOCK_50,
+	decr => decr,
+	incr => incr,
+	LED8 => LED8,
+	RST => RST,
+	SCL => SCL,
+	SDA => SDA
 	);
+
+-- ADC_SDAT
+t_prcs_ADC_SDAT: PROCESS
+BEGIN
+	ADC_SDAT <= '0';
+WAIT;
+END PROCESS t_prcs_ADC_SDAT;
 
 -- CLOCK_50
 t_prcs_CLOCK_50: PROCESS
@@ -74,15 +96,38 @@ LOOP
 END LOOP;
 END PROCESS t_prcs_CLOCK_50;
 
--- ADC_SDAT
-t_prcs_ADC_SDAT: PROCESS
+-- decr
+t_prcs_decr: PROCESS
 BEGIN
-LOOP
-	ADC_SDAT <= '0';
-	WAIT FOR 1000 ps;
-	ADC_SDAT <= '1';
-	WAIT FOR 1000 ps;
-	IF (NOW >= 1000000 ps) THEN WAIT; END IF;
-END LOOP;
-END PROCESS t_prcs_ADC_SDAT;
+	decr <= '0';
+WAIT;
+END PROCESS t_prcs_decr;
+
+-- incr
+t_prcs_incr: PROCESS
+BEGIN
+	incr <= '0';
+WAIT;
+END PROCESS t_prcs_incr;
+
+-- RST
+t_prcs_RST: PROCESS
+BEGIN
+	RST <= '0';
+WAIT;
+END PROCESS t_prcs_RST;
+
+-- SCL
+t_prcs_SCL: PROCESS
+BEGIN
+	SCL <= 'Z';
+WAIT;
+END PROCESS t_prcs_SCL;
+
+-- SDA
+t_prcs_SDA: PROCESS
+BEGIN
+	SDA <= 'Z';
+WAIT;
+END PROCESS t_prcs_SDA;
 END top_level_arch;

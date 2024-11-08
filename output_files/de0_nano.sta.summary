@@ -3,96 +3,96 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : -3.281
-TNS   : -394.896
+Slack : -54.407
+TNS   : -2380.278
 
 Type  : Slow 1200mV 85C Model Setup 'virtual_clock:vclock|virt_clk'
-Slack : -1.559
-TNS   : -11.459
+Slack : -1.666
+TNS   : -12.938
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
-Slack : 0.320
+Slack : 0.342
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'virtual_clock:vclock|virt_clk'
-Slack : 0.357
+Slack : 0.358
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
-Slack : -1.199
-TNS   : -19.588
+Slack : -2.167
+TNS   : -181.218
 
 Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
-Slack : 0.924
+Slack : 0.890
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -204.000
+TNS   : -261.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'virtual_clock:vclock|virt_clk'
 Slack : -1.000
 TNS   : -14.000
 
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -2.881
-TNS   : -335.509
+Slack : -48.239
+TNS   : -2097.085
 
 Type  : Slow 1200mV 0C Model Setup 'virtual_clock:vclock|virt_clk'
-Slack : -1.281
-TNS   : -8.813
+Slack : -1.389
+TNS   : -10.218
 
 Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.299
+Slack : 0.298
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'virtual_clock:vclock|virt_clk'
-Slack : 0.312
+Slack : 0.311
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
-Slack : -0.972
-TNS   : -15.306
+Slack : -1.869
+TNS   : -153.438
 
 Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
-Slack : 0.829
+Slack : 0.795
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -204.000
+TNS   : -261.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'virtual_clock:vclock|virt_clk'
 Slack : -1.000
 TNS   : -14.000
 
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -1.455
-TNS   : -142.409
+Slack : -30.617
+TNS   : -1252.216
 
 Type  : Fast 1200mV 0C Model Setup 'virtual_clock:vclock|virt_clk'
-Slack : -0.426
-TNS   : -1.510
+Slack : -0.524
+TNS   : -2.083
 
 Type  : Fast 1200mV 0C Model Hold 'virtual_clock:vclock|virt_clk'
-Slack : 0.135
+Slack : 0.127
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.142
+Slack : 0.178
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
-Slack : -0.377
-TNS   : -4.942
+Slack : -0.795
+TNS   : -60.401
 
 Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
-Slack : 0.600
+Slack : 0.581
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -261.368
+TNS   : -336.448
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'virtual_clock:vclock|virt_clk'
 Slack : -1.000

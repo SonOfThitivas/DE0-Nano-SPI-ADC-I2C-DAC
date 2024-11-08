@@ -6,109 +6,100 @@ entity tb_top_level is
 end tb_top_level;
 
 architecture sim of tb_top_level is
-    -- Component declaration for the top_level entity
-    component top_level is
-        port (
-            CLOCK_50    : in std_logic;
-            RST          : in std_logic;
-            data_out     : out std_logic_vector(11 downto 0);
-            ADC_SDAT     : in std_logic;
-            ADC_SADDR    : out std_logic;
-            ADC_CS_N     : out std_logic;
-            ADC_SCLK     : out std_logic;
-            SDA          : inout std_logic;
-            SCL          : inout std_logic
-        );
-    end component;
 
-    -- Testbench signals
-    signal CLOCK_50    : std_logic := '0';
-    signal RST         : std_logic := '1';
-    signal data_out    : std_logic_vector(11 downto 0);
-    signal ADC_SDAT    : std_logic := '0';  -- Assuming it is initially low
-    signal ADC_SADDR   : std_logic;
-    signal ADC_CS_N    : std_logic;
-    signal ADC_SCLK    : std_logic;
-    signal SDA         : std_logic := 'Z'; -- I2C bus is high impedance
-    signal SCL         : std_logic := 'Z';
+	-- Component declaration for the Unit Under Test (UUT)
+	component top_level
+		port (
+			CLOCK_50 : in std_logic;
+			RST      : in std_logic;
 
-    -- Clock period definition
-    constant clk_period : time := 20 ns; -- 50 MHz clock
+			-- ADC SPI Protocol
+			ADC_SDAT  : in std_logic;
+			ADC_SADDR : out std_logic;
+			ADC_CS_N  : out std_logic;
+			ADC_SCLK  : out std_logic;
+			
+			-- DAC I2C Protocol
+			SDA : inout std_logic;
+			SCL : inout std_logic
+		);
+	end component;
 
-    -- Lookup table for sine wave
-    type sine_table_type is array(0 to 63) of integer;
-    constant sine_table : sine_table_type := (
-    	2048, 2203, 2354, 2499, 2624, 2728, 2806, 2857,
-    	2879, 2879, 2857, 2806, 2728, 2624, 2499, 2354,
-    	2203, 2048, 1893, 1742, 1591, 1446, 1314, 1190,
-    	1077, 976, 889, 816, 758, 717, 693, 688,
-    	693, 717, 758, 816, 889, 976, 1077, 1190,
-    	1314, 1446, 1591, 1742, 1893, 2048, 2203, 2354,
-    	2499, 2624, 2728, 2806, 2857, 2879, 2879, 2857,
-    	2806, 2728, 2624, 2499, 2354, 2203, 2048, 0  -- Add an additional value to make it 64
-	);
+	-- Testbench signals
+	signal CLOCK_50    : std_logic := '0';
+	signal RST         : std_logic := '1';
+	signal ADC_SDAT    : std_logic := '0';
+	signal ADC_SADDR   : std_logic;
+	signal ADC_CS_N    : std_logic;
+	signal ADC_SCLK    : std_logic;
+	signal SDA         : std_logic := 'Z';
+	signal SCL         : std_logic := 'Z';
 
+	-- Variables for simulation
+	signal test_adc_data   : std_logic_vector(15 downto 0) := (others => '0');
+	signal counter         : integer := 0;
 
-    -- Variables for the sine wave simulation
-    signal index       : integer := 0;  -- Index for sine lookup
-    signal sine_value  : integer;
+	-- Clock generation (50 MHz)
+	constant CLOCK_PERIOD : time := 20 ns;
 
 begin
-    -- Instantiate the top_level design
-    uut: top_level port map (
-        CLOCK_50 => CLOCK_50,
-        RST => RST,
-        data_out => data_out,
-        ADC_SDAT => ADC_SDAT,
-        ADC_SADDR => ADC_SADDR,
-        ADC_CS_N => ADC_CS_N,
-        ADC_SCLK => ADC_SCLK,
-        SDA => SDA,
-        SCL => SCL
-    );
 
-    -- Clock generation process
-    clk_process : process
-    begin
-        while true loop
-            CLOCK_50 <= '0';
-            wait for clk_period / 2;
-            CLOCK_50 <= '1';
-            wait for clk_period / 2;
-        end loop;
-    end process;
+	-- Instantiate the Unit Under Test (UUT)
+	UUT: top_level
+		port map (
+			CLOCK_50 => CLOCK_50,
+			RST      => RST,
+			ADC_SDAT => ADC_SDAT,
+			ADC_SADDR => ADC_SADDR,
+			ADC_CS_N  => ADC_CS_N,
+			ADC_SCLK  => ADC_SCLK,
+			SDA      => SDA,
+			SCL      => SCL
+		);
 
-    -- Test process to simulate a continuously varying microphone signal
-    stimulus_process : process
-    begin
-        -- Initialize signals
-        RST <= '1';
-        wait for 100 ns; -- Wait for some time before releasing reset
-        
-        -- Release reset
-        RST <= '0';
-        wait for 20 ns;
-        RST <= '1';
+	-- Clock process
+	clock_process : process
+	begin
+		CLOCK_50 <= '0';
+		wait for CLOCK_PERIOD / 2;
+		CLOCK_50 <= '1';
+		wait for CLOCK_PERIOD / 2;
+	end process;
 
-        -- Simulate a continuously varying signal
-        while true loop
-            -- Get the sine value from the lookup table
-            sine_value <= sine_table(index);
-            
-            -- Assign the sine value to ADC_SDAT (convert to std_logic)
-            ADC_SDAT <= std_logic(to_unsigned(sine_value, 12)(11)); -- Set the MSB for ADC_SDAT
-            
-            -- Increment index and wrap around
-            index <= (index + 1) mod 64;
-            
-            wait for 40 ns; -- Adjust to simulate sampling rate
-        end loop;
+	-- Stimulus process to simulate ADC input signals
+	stim_proc: process
+	begin
+		-- Reset sequence
+		RST <= '1';
+		wait for 100 ns;
+		RST <= '0';
+		wait for 100 ns;
+		RST <= '1';
+		
+		-- Simulate ADC conversion by toggling ADC signals
+		while counter < 1000 loop  -- Run for 1000 cycles
+			-- Assert ADC_CS_N low to enable ADC communication
+			ADC_CS_N <= '0';
+			-- Generate clock pulses for ADC_SCLK
+			for i in 0 to 15 loop
+				ADC_SCLK <= '1';
+				wait for CLOCK_PERIOD / 4;
+				ADC_SCLK <= '0';
+				wait for CLOCK_PERIOD / 4;
+				ADC_SDAT <= test_adc_data(15 - i);  -- Shift ADC data bit-by-bit
+			end loop;
+			
+			-- End ADC transaction by setting ADC_CS_N high
+			ADC_CS_N <= '1';
+			wait for CLOCK_PERIOD * 4;
+			
+			-- Increment the test ADC data for variation in the next cycle
+			test_adc_data <= std_logic_vector(unsigned(test_adc_data) + 1);
+			counter <= counter + 1;
+		end loop;
 
-        -- Wait for processing to complete
-        wait for 500 ns;
-
-        -- Finish simulation
-        wait;
-    end process;
+		-- End of test, stop the simulation
+		wait;
+	end process;
 
 end sim;

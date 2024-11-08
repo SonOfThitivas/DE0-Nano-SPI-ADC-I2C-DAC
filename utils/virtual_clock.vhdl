@@ -19,7 +19,7 @@ begin
     begin
         if rising_edge(CLOCK_50) then
             vclk_cnt := vclk_cnt + 1;
-            if vclk_cnt = 25 then
+            if vclk_cnt = 15 then
                 vclk_cnt := (others => '0');
                 virt_clk <= not virt_clk;
             end if;

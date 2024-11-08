@@ -21,6 +21,7 @@ after 2500 simTimestamp
 run -all
 quit -f
 
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -39,6 +40,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
@@ -128,174 +130,144 @@ SIGNAL("CLOCK_50")
 	PARENT = "";
 }
 
-SIGNAL("adc_data_out")
+SIGNAL("decr")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("incr")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("LED8")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
-	WIDTH = 16;
+	WIDTH = 8;
 	LSB_INDEX = 0;
 	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
-SIGNAL("adc_data_out[15]")
+SIGNAL("LED8[7]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[14]")
+SIGNAL("LED8[6]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[13]")
+SIGNAL("LED8[5]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[12]")
+SIGNAL("LED8[4]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[11]")
+SIGNAL("LED8[3]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[10]")
+SIGNAL("LED8[2]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[9]")
+SIGNAL("LED8[1]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[8]")
+SIGNAL("LED8[0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	PARENT = "LED8";
 }
 
-SIGNAL("adc_data_out[7]")
+SIGNAL("RST")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	DIRECTION = INPUT;
+	PARENT = "";
 }
 
-SIGNAL("adc_data_out[6]")
+SIGNAL("SCL")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	DIRECTION = BIDIR;
+	PARENT = "";
 }
 
-SIGNAL("adc_data_out[5]")
+SIGNAL("SDA")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
-}
-
-SIGNAL("adc_data_out[4]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
-}
-
-SIGNAL("adc_data_out[3]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
-}
-
-SIGNAL("adc_data_out[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
-}
-
-SIGNAL("adc_data_out[1]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
-}
-
-SIGNAL("adc_data_out[0]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "adc_data_out";
+	DIRECTION = BIDIR;
+	PARENT = "";
 }
 
 TRANSITION_LIST("ADC_CS_N")
@@ -330,12 +302,7 @@ TRANSITION_LIST("ADC_SDAT")
 	NODE
 	{
 		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 500;
-			LEVEL 0 FOR 1.0;
-			LEVEL 1 FOR 1.0;
-		}
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -353,7 +320,25 @@ TRANSITION_LIST("CLOCK_50")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[15]")
+TRANSITION_LIST("decr")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("incr")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("LED8[7]")
 {
 	NODE
 	{
@@ -362,7 +347,7 @@ TRANSITION_LIST("adc_data_out[15]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[14]")
+TRANSITION_LIST("LED8[6]")
 {
 	NODE
 	{
@@ -371,7 +356,7 @@ TRANSITION_LIST("adc_data_out[14]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[13]")
+TRANSITION_LIST("LED8[5]")
 {
 	NODE
 	{
@@ -380,7 +365,7 @@ TRANSITION_LIST("adc_data_out[13]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[12]")
+TRANSITION_LIST("LED8[4]")
 {
 	NODE
 	{
@@ -389,7 +374,7 @@ TRANSITION_LIST("adc_data_out[12]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[11]")
+TRANSITION_LIST("LED8[3]")
 {
 	NODE
 	{
@@ -398,7 +383,7 @@ TRANSITION_LIST("adc_data_out[11]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[10]")
+TRANSITION_LIST("LED8[2]")
 {
 	NODE
 	{
@@ -407,7 +392,7 @@ TRANSITION_LIST("adc_data_out[10]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[9]")
+TRANSITION_LIST("LED8[1]")
 {
 	NODE
 	{
@@ -416,7 +401,7 @@ TRANSITION_LIST("adc_data_out[9]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[8]")
+TRANSITION_LIST("LED8[0]")
 {
 	NODE
 	{
@@ -425,81 +410,36 @@ TRANSITION_LIST("adc_data_out[8]")
 	}
 }
 
-TRANSITION_LIST("adc_data_out[7]")
+TRANSITION_LIST("RST")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
-TRANSITION_LIST("adc_data_out[6]")
+TRANSITION_LIST("SCL")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL Z FOR 1000.0;
 	}
 }
 
-TRANSITION_LIST("adc_data_out[5]")
+TRANSITION_LIST("SDA")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("adc_data_out[4]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("adc_data_out[3]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("adc_data_out[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("adc_data_out[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("adc_data_out[0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL Z FOR 1000.0;
 	}
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "CLOCK_50";
+	CHANNEL = "ADC_CS_N";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 0;
@@ -508,7 +448,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "ADC_SDAT";
+	CHANNEL = "ADC_SADDR";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 1;
@@ -517,198 +457,163 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out";
+	CHANNEL = "ADC_SCLK";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
 	TREE_LEVEL = 0;
-	CHILDREN = 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[15]";
+	CHANNEL = "ADC_SDAT";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[14]";
+	CHANNEL = "CLOCK_50";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[13]";
+	CHANNEL = "decr";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 5;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[12]";
+	CHANNEL = "incr";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 6;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[11]";
+	CHANNEL = "LED8";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 7;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
+	CHILDREN = 8, 9, 10, 11, 12, 13, 14, 15;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[10]";
+	CHANNEL = "LED8[7]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 8;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[9]";
+	CHANNEL = "LED8[6]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 9;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[8]";
+	CHANNEL = "LED8[5]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 10;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[7]";
+	CHANNEL = "LED8[4]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 11;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[6]";
+	CHANNEL = "LED8[3]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 12;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[5]";
+	CHANNEL = "LED8[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 13;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[4]";
+	CHANNEL = "LED8[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 14;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[3]";
+	CHANNEL = "LED8[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 15;
 	TREE_LEVEL = 1;
-	PARENT = 2;
+	PARENT = 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[2]";
+	CHANNEL = "RST";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 16;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[1]";
+	CHANNEL = "SCL";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 17;
-	TREE_LEVEL = 1;
-	PARENT = 2;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "adc_data_out[0]";
+	CHANNEL = "SDA";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 18;
-	TREE_LEVEL = 1;
-	PARENT = 2;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ADC_CS_N";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 19;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ADC_SADDR";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 20;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ADC_SCLK";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 21;
 	TREE_LEVEL = 0;
 }
 

@@ -9,34 +9,32 @@ z2
 !i10f 100
 cModel Technology
 Z0 dD:/Documents/Quartus_files/de0_nano/simulation/qsim
-Etop_level
-Z1 w1729688607
-Z2 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 WOh:M[al;oVzG5c`<He>D0
-Z3 DPx10 cycloneive 21 cycloneive_components 0 22 zGMDhP>8e@2k@f0e<PY]k2
-Z4 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
-Z5 DPx6 altera 11 dffeas_pack 0 22 dc5N=DKXMMTVYdUQ@D3FA2
-Z6 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
-Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z8 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z9 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
-!i122 12
+Ehard_block
+Z1 w1730976032
+Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 WOh:M[al;oVzG5c`<He>D0
+Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z7 DPx10 cycloneive 21 cycloneive_components 0 22 zGMDhP>8e@2k@f0e<PY]k2
+!i122 14
 R0
-Z10 8de0_nano.vho
-Z11 Fde0_nano.vho
+Z8 8de0_nano.vho
+Z9 Fde0_nano.vho
 l0
-L37 1
-VcN7FbKal[B4oj8<QW<i_f0
-!s100 h<<fTii5nOCAHk1>zBNFU0
-Z12 OV;C;2020.1;71
+L35 1
+VB]0;STalBkCB1_B4BXQDW2
+!s100 >mXi5[`cD`bFC`UBKA<om3
+Z10 OV;C;2020.1;71
 32
-Z13 !s110 1729688608
+Z11 !s110 1730976033
 !i10b 1
-Z14 !s108 1729688608.000000
-Z15 !s90 -work|work|de0_nano.vho|
-Z16 !s107 de0_nano.vho|
+Z12 !s108 1730976033.000000
+Z13 !s90 -work|work|de0_nano.vho|
+Z14 !s107 de0_nano.vho|
 !i113 1
-Z17 o-work work
-Z18 tExplicit 1 CvgOpt 0
+Z15 o-work work
+Z16 tExplicit 1 CvgOpt 0
 Astructure
 R2
 R3
@@ -44,62 +42,113 @@ R4
 R5
 R6
 R7
-R8
-R9
-DEx4 work 9 top_level 0 22 cN7FbKal[B4oj8<QW<i_f0
-!i122 12
-l328
-L48 4762
-V;ZDbNm`TBj2eYT`g7:9W_1
-!s100 0[aEY=ekE:biMKDoZCEnZ0
-R12
+DEx4 work 10 hard_block 0 22 B]0;STalBkCB1_B4BXQDW2
+!i122 14
+l65
+L51 20
+Via>5o7W??azG@W@@eFOTF0
+!s100 [5;Wd8QGQ>@2NGoJ1I]Y43
+R10
 32
-R13
+R11
 !i10b 1
+R12
+R13
 R14
+!i113 1
 R15
 R16
-!i113 1
-R17
-R18
-Etop_level_vhd_vec_tst
+Etop_level
 R1
+R3
 R7
-R8
-!i122 13
+R2
+Z17 DPx6 altera 11 dffeas_pack 0 22 dc5N=DKXMMTVYdUQ@D3FA2
+R4
+R5
+R6
+Z18 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
+!i122 14
 R0
-Z19 8Waveform.vwf.vht
-Z20 FWaveform.vwf.vht
+R8
+R9
+l0
+L80 1
+VS3H2[>d?6H;U;=IiR`>Do1
+!s100 eWUPblKK0WOh=GSL;PLdK2
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
+Astructure
+R3
+R7
+R2
+R17
+R4
+R5
+R6
+R18
+DEx4 work 9 top_level 0 22 S3H2[>d?6H;U;=IiR`>Do1
+!i122 14
+l1975
+L117 28978
+VkaYz^DA>NTjMYURE<d>;D0
+!s100 =5_lWaUI11ZBEGCPjPj6I2
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R15
+R16
+Etop_level_vhd_vec_tst
+Z19 w1730976031
+R5
+R6
+!i122 15
+R0
+Z20 8Waveform.vwf.vht
+Z21 FWaveform.vwf.vht
 l0
 L32 1
 Vz4W7UOOLR_fUZ9OzmaocK2
 !s100 2S7nXjY@FF@V1O@8la6^@0
-R12
+R10
 32
-R13
+Z22 !s110 1730976034
 !i10b 1
-R14
-Z21 !s90 -work|work|Waveform.vwf.vht|
-Z22 !s107 Waveform.vwf.vht|
+R12
+Z23 !s90 -work|work|Waveform.vwf.vht|
+Z24 !s107 Waveform.vwf.vht|
 !i113 1
-R17
-R18
+R15
+R16
 Atop_level_arch
-R7
-R8
-Z23 DEx4 work 21 top_level_vhd_vec_tst 0 22 z4W7UOOLR_fUZ9OzmaocK2
-!i122 13
-l53
-L34 55
-V?mziKBmPP8aLE[]@eOYUG2
-!s100 ]ERmQG:DbLMGliI[ei]0c1
-R12
+R5
+R6
+Z25 DEx4 work 21 top_level_vhd_vec_tst 0 22 z4W7UOOLR_fUZ9OzmaocK2
+!i122 15
+l63
+L34 100
+VIz_TdhC9@c9RA_2D@MD3=1
+!s100 <@94>P]JWPkoLKXKKWS=o2
+R10
 32
-R13
-!i10b 1
-R14
-R21
 R22
+!i10b 1
+R12
+R23
+R24
 !i113 1
-R17
-R18
+R15
+R16

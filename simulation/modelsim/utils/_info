@@ -23,96 +23,96 @@ V`O>1K`V:<DeBPZ5ZQ>hB41
 !s100 nYQbMDcC]JPME2A=n]gnK2
 Z4 OV;C;2020.1;71
 31
-Z5 !s110 1730439368
+!s110 1730439368
 !i10b 1
-Z6 !s108 1730439368.000000
+!s108 1730439368.000000
 !s90 -reportprogress|300|-93|-work|utils|D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl|
 !s107 D:/Documents/Quartus_files/de0_nano/utils/fonts.vhdl|
 !i113 1
-Z7 o-93 -work utils
-Z8 tExplicit 1 CvgOpt 0
+o-93 -work utils
+Z5 tExplicit 1 CvgOpt 0
 Pmachine_state_type
 R1
 R2
-!i122 73
+!i122 92
 R3
 R0
-Z9 8D:/Documents/Quartus_files/de0_nano/utils/types.vhdl
-Z10 FD:/Documents/Quartus_files/de0_nano/utils/types.vhdl
+Z6 8D:/Documents/Quartus_files/de0_nano/utils/types.vhdl
+Z7 FD:/Documents/Quartus_files/de0_nano/utils/types.vhdl
 l0
 L5 1
-Vi[HiG6PdCEz?5iVZGlIQ<3
+VSUe[UB0Jd_2`HNiobg7hd3
 !s100 <0bTWKKnchC3X5maAYZ@n3
 R4
-31
+33
 b1
-R5
+Z8 !s110 1730949778
 !i10b 1
-R6
-Z11 !s90 -reportprogress|300|-93|-work|utils|D:/Documents/Quartus_files/de0_nano/utils/types.vhdl|
-Z12 !s107 D:/Documents/Quartus_files/de0_nano/utils/types.vhdl|
+Z9 !s108 1730949778.000000
+Z10 !s90 -reportprogress|300|-2008|-work|utils|D:/Documents/Quartus_files/de0_nano/utils/types.vhdl|
+Z11 !s107 D:/Documents/Quartus_files/de0_nano/utils/types.vhdl|
 !i113 1
-R7
-R8
+Z12 o-2008 -work utils
+R5
 Bbody
-DPx4 work 18 machine_state_type 0 22 i[HiG6PdCEz?5iVZGlIQ<3
+Z13 DPx4 work 18 machine_state_type 0 22 SUe[UB0Jd_2`HNiobg7hd3
 R1
 R2
-!i122 73
+!i122 92
 l0
-L10 1
-V>n1JMUMS5QcK7;DAiVnlB3
-!s100 YFb[Fge4olPM4]]6OgFDJ1
+Z14 L10 1
+Z15 VZic21SI=:A75Y?PB7Rfc^2
+Z16 !s100 YFb[Fge4olPM4]]6OgFDJ1
 R4
-31
-R5
-!i10b 1
-R6
-R11
-R12
-!i113 1
-R7
+33
 R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R5
 Evirtual_clock
-Z13 w1730108263
-Z14 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z17 w1730862828
+Z18 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R1
 R2
-!i122 72
+!i122 91
 R0
-Z15 8D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl
-Z16 FD:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl
+Z19 8D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl
+Z20 FD:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl
 l0
 L7 1
-V>hiVBzeUIWBEA8i62S_9H0
+Va]@fkThH6>3HRkaPK0NeT1
 !s100 b<a>ZmgCFad1EkfS0GU::0
 R4
-31
-Z17 !s110 1730439367
-!i10b 1
-Z18 !s108 1730439367.000000
-Z19 !s90 -reportprogress|300|-93|-work|utils|D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl|
-Z20 !s107 D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl|
-!i113 1
-R7
+33
 R8
+!i10b 1
+R9
+Z21 !s90 -reportprogress|300|-2008|-work|utils|D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl|
+Z22 !s107 D:/Documents/Quartus_files/de0_nano/utils/virtual_clock.vhdl|
+!i113 1
+R12
+R5
 Avclock
-R14
+R18
 R1
 R2
-DEx4 work 13 virtual_clock 0 22 >hiVBzeUIWBEA8i62S_9H0
-!i122 72
+DEx4 work 13 virtual_clock 0 22 a]@fkThH6>3HRkaPK0NeT1
+!i122 91
 l16
 L15 14
-V0;_MBBz9ggY9AZ0e4o6961
-!s100 P=0db;lHJCHG0zBzT<VBj2
+VG?]T:0Y@zJg2DCY2leR;@0
+!s100 Vn24URkY>]g[OQGYA59S02
 R4
-31
-R17
-!i10b 1
-R18
-R19
-R20
-!i113 1
-R7
+33
 R8
+!i10b 1
+R9
+R21
+R22
+!i113 1
+R12
+R5

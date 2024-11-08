@@ -7,20 +7,22 @@ use utils.machine_state_type.all;
 
 entity mcp4725_dac is
   port (
-    NRESET  : in std_logic;
-    CLK     : in std_logic;
---	 sample_table : in sample_table_t := (others => (others => '0'));
-	 sample  : in std_logic_vector(11 downto 0);
-    I2C_SDA : inout std_logic;
-    I2C_SCL : inout std_logic;
-    STATUS  : out std_logic
+    NRESET  		: in std_logic;
+    CLK     		: in std_logic;
+	 sample  		: in std_logic_vector(11 downto 0);
+    I2C_SDA 		: inout std_logic;
+    I2C_SCL 		: inout std_logic;
+	 I2C_CLK_SPEED : in integer;
+	 incr,
+	 decr				: in std_logic;
+    STATUS  		: out std_logic
   );
 end mcp4725_dac;
 
 architecture behavior of mcp4725_dac is
   -- 7-bit I2C device address for MCP4725 (0x60)
   constant I2C_ADDR      : std_logic_vector(6 downto 0) := "1100000";
-  constant I2C_CLK_SPEED : integer                      :=  1_000_000; -- I2C speed
+--  constant I2C_CLK_SPEED : integer                      :=  400_000; -- I2C speed
 
   type state_type is (ST_IDLE, ST_START, ST_WR_1, ST_WR_2, ST_STOP);
   signal state : state_type := ST_IDLE;
@@ -33,6 +35,8 @@ architecture behavior of mcp4725_dac is
   signal data_buffer : std_logic_vector(15 downto 0);
   signal busy_prev   : std_logic_vector(1 downto 0);
   signal wait_cnt    : integer := 0;
+  signal prev_incr,
+			prev_decr	: std_logic := '1';
   
   signal adc_state	: machine_state_type := initialize;
 begin
@@ -40,13 +44,14 @@ begin
   -- I2C Master Instantiation
   i2c_master_inst : entity work.i2c_master
     generic map(
-      input_clk => 50_000_000, -- Assume system clock of 50 MHz
-      bus_clk   => I2C_CLK_SPEED
+      input_clk => 50_000_000 -- Assume system clock of 50 MHz
+--      ,bus_clk   => I2C_CLK_SPEED
     )
     port map
     (
       clk       => CLK,
       reset_n   => NRESET,
+		bus_clk	 => I2C_CLK_SPEED,
       ena       => ena,
       addr      => I2C_ADDR,
       rw        => rw,
@@ -54,25 +59,28 @@ begin
       busy      => busy,
       ack_error => ack_error,
       sda       => I2C_SDA,
-      scl       => I2C_SCL
+      scl       => I2C_SCL,
+		incr		 => incr,
+		decr		 => decr
     );
 
   STATUS <= busy;
 
   process (NRESET, CLK)
   begin
-    if NRESET = '0' then
+    if NRESET = '0' or
+		 (incr = '0' and prev_incr = '1') or
+		 (decr = '0' and prev_decr = '1') then
       state        <= ST_IDLE;
       ena          <= '0';
       rw           <= '0';
       busy_prev    <= (others => '0');
---      sample_index <= 0;
       wait_cnt     <= 10000;
 
     elsif rising_edge(CLK) then
-	 
---		if adc_state = execute then
-
+			prev_incr <= incr;
+			prev_decr <= decr;
+			
 			busy_prev <= busy_prev(0) & busy;
 
 			case state is
@@ -107,11 +115,6 @@ begin
 					ena <= '0';
 				 elsif busy_prev = "10" then -- busy goes low
 					if ack_error = '0' then -- ACK
-	--              if sample_index = MAX_INDEX then
-	--                sample_index <= 0;
-	--              else
-	--                sample_index <= sample_index + 1;
-	--              end if;
 					  state <= ST_IDLE;
 					else -- No ACK
 					  state <= ST_STOP;
@@ -123,7 +126,6 @@ begin
 					wait_cnt     <= 10000;
 					ena          <= '0';
 					state        <= ST_IDLE;
-	--            sample_index <= 0;
 				 else
 					wait_cnt <= wait_cnt - 1;
 				 end if;
@@ -133,7 +135,6 @@ begin
 
 			end case;
 			
---		end if;
     end if;
   end process;
 
